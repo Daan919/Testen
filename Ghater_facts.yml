@@ -3,8 +3,8 @@
   hosts: all
  
   tasks:
-  - name: Collect all BIG-IP Data
+  - name: Collect all BIG-IP facts
     bigip_device_facts:
-    gather_subset:
-      -all
+      gather_subset:
+        - all
 
