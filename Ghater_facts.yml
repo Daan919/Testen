@@ -1,4 +1,9 @@
 ---
+
+- name: gather facts Big IP
+  hosts: all
+ 
+  tasks:
 - name: Collect all BIG-IP Data
   bigip_device_facts:
     gather_subset:
