@@ -6,6 +6,6 @@
   tasks:
 - name: Collect all BIG-IP Data
   bigip_device_facts:
-    gather_subset:
+   gather_subset:
      -all
 
