@@ -12,8 +12,10 @@
         - all
       provider:
         server_port: 443
-        validate_certs: no     
-          
+        validate_certs: no 
+    delegate_to: localhost
+    
+
           
 
 
