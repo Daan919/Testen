@@ -10,5 +10,9 @@
     bigip_device_facts:
       gather_subset:
         - all
+      provider:
+        validate_certs: no     
+          
+          
 
 
