@@ -12,7 +12,7 @@
       gather_subset:
         - all
       provider:
-        config: "{{ lookup('file', '/tmp/gathersubset.xml') }}"
+        config: "{{ lookup('file', '/tmp/bigip_device_facts.xml') }}"
         user: "{{f5_username}}"
         password: "{{f5_password}}"
         server_port: 443
