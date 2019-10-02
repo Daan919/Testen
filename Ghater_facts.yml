@@ -2,9 +2,6 @@
 - name: gather facts Big IP
   hosts: all
   connection: local
- 
-  roles:
-    - role: f5devcentral.f5ansible
   
   tasks:
   - name: Collect all BIG-IP facts
