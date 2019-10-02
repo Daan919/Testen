@@ -12,7 +12,7 @@
       gather_subset:
         - all
       provider:
-        config: "{{ lookup('file', '/tmp/f5job.xml') }}"
+        config: "{{ lookup('file', '/tmp/Ghater_factsjob.xml') }}"
         user: {{f5_username}}
         password: {{f5_password}}
         server_port: 443
