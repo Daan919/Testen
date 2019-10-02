@@ -11,9 +11,6 @@
     bigip_device_facts:
       gather_subset:
         - all
-      provider:
-        server_port: 443
-        validate_certs: no 
     delegate_to: localhost
     
 
