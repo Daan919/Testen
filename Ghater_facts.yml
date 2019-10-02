@@ -12,6 +12,9 @@
       gather_subset:
         - all
       provider:
+        config: "{{ lookup('file', '/tmp/f5job.xml') }}"
+        user: {{f5_username}}
+        password: {{f5_password}}
         server_port: 443
         server: 192.168.201.251
         validate_certs: no
