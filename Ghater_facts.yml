@@ -3,18 +3,25 @@
   hosts: all
   connection: local
   
-  tasks:
-  - name: Collect all BIG-IP facts
-    bigip_device_facts:
-      gather_subset:
-        - all
-      provider:
-        
-        server_port: 443
-        server: 192.168.201.251
-        validate_certs: no
-    delegate_to: localhost
+  
+#  tasks:
+#  - name: Collect all BIG-IP facts
+#    bigip_device_facts:
+#      gather_subset:
+#        - pools
+#      provider:
+#        server_port: 443
+#        server: 192.168.201.251
+#        validate_certs: no
+#    delegate_to: localhost
     
+- name: Get pool facts
+  bigip_gtm_facts:
+    server: lb.mydomain.com
+    user: admin
+    password: secret
+    include: pool
+    filter: my_pool
 
           
 
