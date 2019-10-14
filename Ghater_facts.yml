@@ -4,7 +4,7 @@
   connection: local
   
   
-#  tasks:
+  tasks:
 #  - name: Collect all BIG-IP facts
 #    bigip_device_facts:
 #      gather_subset:
@@ -15,14 +15,14 @@
 #        validate_certs: no
 #    delegate_to: localhost
     
-- name: Get pool facts
-  bigip_gtm_facts:
-    server: lb.mydomain.com
-    user: admin
-    password: secret
-    include: pool
-    filter: my_pool
+  - name: Get pool facts
+    bigip_gtm_facts:
+      include: pool
+      filter: my_pool
 
           
+
+
+#fsgsfagsfd
 
 
