@@ -1,0 +1,5 @@
+---
+- name: publish website
+  hosts: all
+ 
+  tasks: 

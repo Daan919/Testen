@@ -1,8 +1,0 @@
----
-- name: gather facts Big IP
-  hosts: all
- 
-  tasks:
- 
-  - name: Hello World!
-    shell: echo "Hi! Tower is working."
