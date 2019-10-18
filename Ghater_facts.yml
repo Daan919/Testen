@@ -3,12 +3,13 @@
   hosts: all
   connection: local
 
-  src: https://github.com/f5devcentral/ansible-role-f5ansible 
+  
  
   
   
   tasks:
   - name: Collect all BIG-IP facts
+    src: https://github.com/f5devcentral/ansible-role-f5ansible 
     bigip_device_facts:
       gather_subset:
         - ltm-pools
