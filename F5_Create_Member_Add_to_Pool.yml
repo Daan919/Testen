@@ -1,0 +1,27 @@
+---
+- name: F5_create_member_add_to_pool
+  hosts: all
+  connection: local
+
+# De ansible role voor de F5 
+- src: https://github.com/f5devcentral/ansible-role-f5ansible 
+  name: f5devcentral.f5ansible.
+  
+  tasks:
+  - name: Add pool member
+  bigip_pool_member:
+    pool: "{{pool_name}}"
+    partition: "{{partition}}"
+    host: "ansible_default_ipv4['192.168.201.102'] "
+    port: 443
+    description: web server
+    connection_limit: 100
+    rate_limit: 50
+    ratio: 2
+    provider:
+      server_port: 443
+      server: 192.168.201.251
+      validate_certs: no
+  delegate_to: localhost
+
+    
