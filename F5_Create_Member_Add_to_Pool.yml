@@ -9,6 +9,7 @@
 
   - name: Add node
     bigip_node:
+      partition: "{{partition}}"
       host: "{{ip}}"
       name: "{{ip}}"
     delegate_to: localhost
