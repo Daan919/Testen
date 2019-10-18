@@ -2,9 +2,7 @@
 - name: gather facts Big IP
   hosts: all
   connection: local
-  roles:
-    - role: f5devcentral.bigip_to_ansible
-      bigip_to_ansible_qkview: /path/to/localhost.localdomain.qkview
+
  
   
   

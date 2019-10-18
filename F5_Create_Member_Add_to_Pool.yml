@@ -2,8 +2,7 @@
 - name: F5_create_member_add_to_pool
   hosts: all
   connection: local
-  roles:
-    - role: f5devcentral.bigip_to_ansible
+
 # De ansible role voor de F5 
   
   
