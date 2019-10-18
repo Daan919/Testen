@@ -2,13 +2,23 @@
 - name: F5_create_member_add_to_pool
   hosts: all
   connection: local
+
+  
  
   tasks:
+
+  - name: Add node
+    bigip_node:
+      host: {{'ip'}}
+      name: {{'ip'}}
+    delegate_to: localhost
+
   - name: Add pool member
     bigip_pool_member:
       pool: "{{pool_name}}"
       partition: "{{partition}}"
-      host: "{{ ansible_default_ipv4['192.168.201.199'] }}"
+      host: "{{ ip}}"
+      name: "{{ ip }}"
       port: 443
       description: web server
       connection_limit: 100
