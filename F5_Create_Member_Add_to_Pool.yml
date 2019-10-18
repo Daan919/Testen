@@ -8,8 +8,7 @@
     bigip_pool_member:
       pool: "{{pool_name}}"
       partition: "{{partition}}"
-      host: "ansible_default_ipv4 "
-      address: 192.168.201.102
+      host: "{{ ansible_default_ipv4['192.168.201.199'] }}"
       port: 443
       description: web server
       connection_limit: 100
