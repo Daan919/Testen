@@ -14,7 +14,7 @@
       port: "443"
       pool: "{{pool_name}}"
       snat: Automap  # Source Address Translation = Auto Map
-      description: Test Virtual Server
+      description: "{{description}}}"
       profiles:
         #- name: clientssl      # de ssl profiles 
         #  context: server-side # de ssl profiles 
