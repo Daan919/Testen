@@ -1,0 +1,21 @@
+---
+- name: F5_create_member_add_to_pool
+  hosts: all
+  connection: local
+ 
+  task:
+  - name: Create pool
+    bigip_pool:
+      state: present
+      name: "{{name_pool}}"
+      partition: "{{partition}}"
+      lb_method: round-robin
+      monitors:
+        - https_443
+      slow_ramp_time: 120
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+  
