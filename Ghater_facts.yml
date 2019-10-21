@@ -3,9 +3,6 @@
   hosts: all
   connection: local
 
- 
-  
-  
   tasks:
   - name: Collect all BIG-IP facts
     bigip_device_facts:
