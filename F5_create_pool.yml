@@ -7,7 +7,7 @@
   - name: Create pool
     bigip_pool:
       state: present
-      name: "{{name_pool}}"
+      name: "{{pool_name}}"
       partition: "{{partition}}"
       lb_method: round-robin
       # monitors:
