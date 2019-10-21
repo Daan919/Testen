@@ -21,7 +21,7 @@
         - name: /common/tcp-mobile-optimized
           context: client-side
         - name: /common/tcp-lan-optimized
-          context: client-side
+          context: server-side
       enabled_vlans:
         - /Common/vlan4012
       provider:
