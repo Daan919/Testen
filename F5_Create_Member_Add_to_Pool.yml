@@ -2,11 +2,8 @@
 - name: F5_create_member_add_to_pool
   hosts: all
   connection: local
-
-  
  
   tasks:
-
   - name: Add node
     bigip_node:
       partition: "{{partition}}"
