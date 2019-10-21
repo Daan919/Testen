@@ -1,7 +1,7 @@
 ---
-- name: publish website
+- name: virtual server
   hosts: all
- 
+
   tasks: 
   - name: Create virtual server
     bigip_virtual_server:
