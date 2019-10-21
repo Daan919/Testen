@@ -14,7 +14,7 @@
       port: "443"
       pool: "{{pool_name}}"
       snat: Automap  # Source Address Translation = Auto Map
-      description: "{{description}}}"
+      description: "{{description}}"
       profiles:
         #- name: clientssl      # de ssl profiles 
         #  context: server-side # de ssl profiles 
@@ -22,6 +22,10 @@
           context: client-side
         - name: tcp-lan-optimized
           context: server-side
+        - name: "{{ssl_client}}"
+          context: client-side
+        - name: "{{ssl_server}}"
+          context: server-side 
       enabled_vlans:
         - /Common/vlan4012
       provider:
