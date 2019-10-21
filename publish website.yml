@@ -1,6 +1,7 @@
 ---
 - name: virtual server
   hosts: all
+  connection: local
 
   tasks: 
   - name: Create virtual server
