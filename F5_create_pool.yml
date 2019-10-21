@@ -10,8 +10,8 @@
       name: "{{name_pool}}"
       partition: "{{partition}}"
       lb_method: round-robin
-      monitors:
-        - https_443
+      # monitors:
+      #   - https_443
       slow_ramp_time: 120
       provider:
         server_port: 443
