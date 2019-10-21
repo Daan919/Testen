@@ -1,5 +1,5 @@
 ---
-- name: F5 create member add to pool
+- name: F5 create a pool
   hosts: all
   connection: local
  
