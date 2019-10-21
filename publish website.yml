@@ -18,9 +18,9 @@
       profiles:
         #- name: clientssl      # de ssl profiles 
         #  context: server-side # de ssl profiles 
-        - name: tcp=mobile-optimized
+        - name: /common/tcp-mobile-optimized
           context: client-side
-        - name: tcp=lan-optimized
+        - name: /common/tcp-lan-optimized
           context: client-side
       enabled_vlans:
         - /Common/vlan4012
