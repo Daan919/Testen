@@ -19,10 +19,10 @@
     bigip_pool_member:
       pool: "{{pool_name}}"
       partition: "{{partition}}"
-      host: "{{ ip}}"
-      name: "{{ ip }}"
+      host: "{{ip}}"
+      name: "{{ip}}"
       port: 443
-      description: web server
+      description: "{{description}}" 
       connection_limit: 100
       rate_limit: 50
       ratio: 2
