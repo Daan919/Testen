@@ -15,13 +15,13 @@
         validate_certs: no
     delegate_to: localhost
 
-  - name: Add pool member
+  - name: create member and add to pool 
     bigip_pool_member:
       pool: "{{pool_name}}"
       partition: "{{partition}}"
       host: "{{ip}}"
       name: "{{ip}}"
-      port: 443
+      port: "{{port}}"
       description: "{{description}}" 
       connection_limit: 100
       rate_limit: 50
