@@ -1,0 +1,74 @@
+---
+- name: F5_create_virtual_server_pool_member
+  hosts: all
+  connection: local
+
+  tasks:
+  - name: Add node
+    bigip_node:
+      partition: "{{partition}}"
+      host: "{{ip}}"
+      name: "{{ip}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
+  - name: Create pool
+    bigip_pool:
+      state: present
+      name: "{{pool_name}}"
+      partition: "{{partition}}"
+      lb_method: round-robin
+      slow_ramp_time: 120
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
+  - name: create member and add to pool 
+    bigip_pool_member:
+      pool: "{{pool_name}}"
+      partition: "{{partition}}"
+      host: "{{ip}}"
+      name: "{{ip}}"
+      port: "{{port}}"
+      description: "{{description_member}}" 
+      connection_limit: 100
+      rate_limit: 50
+      ratio: 2
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
+  - name: Create virtual server
+    bigip_virtual_server:
+      state: present
+      partition: "{{partition}}"
+      name: "{{name_server}}"
+      destination: "{{ip_server}}" # publiek IP 
+      ip_protocol: "tcp"
+      port: "443"
+      pool: "{{pool_name}}"
+      snat: Automap  # Source Address Translation = Auto Map
+      description: "{{description}}"
+      profiles:
+        - name: tcp-mobile-optimized
+          context: client-side
+        - name: tcp-lan-optimized
+          context: server-side
+        - name: "{{ssl_client}}"
+          context: client-side
+        - name: "{{ssl_server}}"
+          context: server-side 
+      enabled_vlans:
+        - /Common/vlan4012
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost   
