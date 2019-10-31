@@ -4,11 +4,13 @@
   connection: local
 
   tasks: 
-  - name: Add the iRule contained in template irule.tcl to the LTM module
+  - copy: content="{{irule_code}}" dest=/irules/irule.tlc
+
+  - name: update the iRule to the LTM module
     bigip_irule:
       module: ltm
       name: "{{irule_name}}"
-      src: "{{irule_code}}"
+      src: "/irules/irule.tlc"
       partition: "{{partition}}"
       state: present 
       provider:
