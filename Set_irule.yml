@@ -8,7 +8,7 @@
     bigip_irule:
       module: ltm
       name: "{{irule_name}}"
-      content: "{{irule_code}}"
+      src: "{{irule_code}}"
       partition: "{{partition}}"
       state: present 
       provider:
