@@ -3,7 +3,6 @@
   hosts: all
   connection: local
 
- 
   tasks:
   - name: delete the iRule fo the LTM module
     bigip_irule:
