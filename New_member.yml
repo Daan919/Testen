@@ -12,7 +12,7 @@
       name: "{{ip}}"
       port: "{{port}}"
       monitors:
-        - "{{item}}"
+         "{{item}}"
       loop: "{{monitor}}"
       description: "{{description_member}}" 
       connection_limit: 100
