@@ -1,0 +1,16 @@
+---
+- name: delete node
+  hosts: all
+  connection: local
+ 
+  tasks:
+  - name: delete node
+    bigip_node:
+      partition: "{{partition}}"
+      state: absent
+      name: "{{ip}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
