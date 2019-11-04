@@ -1,0 +1,19 @@
+---
+- name: set memberschip
+  hosts: all
+  connection: local
+
+  tasks:   
+  - name: set memberschip
+    bigip_pool_member:
+      pool: "{{pool_name}}"
+      partition: "{{partition}}"
+      host: "{{ip}}"
+ #     port: "{{port}}" kan niet worden aangepast na aanmaken member
+      monitors:
+        - "{{monitor}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
