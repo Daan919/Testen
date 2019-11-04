@@ -1,14 +1,19 @@
 ---
-- name: set memberschip
+- name: delete memberschip
   hosts: all
   connection: local
 
+  vars:
+  var1: {{  member.split(":") | lower }}
+  var2: {{  member.split(":") | higher }}
+
   tasks:   
-  - name: set memberschip
+  - name: delete memberschip
     bigip_pool_member:
       pool: "{{pool_name}}"
       partition: "{{partition}}"
-      host: "{{member}}"
+      host: "{{var1}}"
+      port: "{{var2}}"
       state: absent
       provider:
         server_port: 443
