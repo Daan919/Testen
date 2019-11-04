@@ -3,11 +3,11 @@
   hosts: all
   connection: local
 
-  vars:
-  var1: {{  member.split(":") | lower }}
-  var2: {{  member.split(":") | higher }}
-
   tasks:   
+  - set_fact:
+      var1: "{{member.split(':')[0]}}"
+      var2: "{{member.split(':')[1]}}"
+
   - name: delete memberschip
     bigip_pool_member:
       pool: "{{pool_name}}"
