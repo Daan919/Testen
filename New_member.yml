@@ -12,7 +12,8 @@
       name: "{{ip}}"
       port: "{{port}}"
       monitors:
-        - "{{monitor}}"
+        - "{{item}}"
+      loop: "{{monitor}}"
       description: "{{description_member}}" 
       connection_limit: 100
       rate_limit: 50
