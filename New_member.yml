@@ -13,7 +13,7 @@
       port: "{{port}}"
       monitors:
         - "{{item}}"
-      with_items: "{{monitor}}"
+      loop: "{{monitor}}"
       description: "{{description_member}}" 
       connection_limit: 100
       rate_limit: 50
