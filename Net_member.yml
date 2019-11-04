@@ -1,0 +1,22 @@
+---
+- name: new memberschip
+  hosts: all
+  connection: local
+
+  tasks:   
+  - name: create member and add to pool 
+    bigip_pool_member:
+      pool: "{{pool_name}}"
+      partition: "{{partition}}"
+      host: "{{ip}}"
+      name: "{{ip}}"
+      port: "{{port}}"
+      description: "{{description_member}}" 
+      connection_limit: 100
+      rate_limit: 50
+      ratio: 2
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
