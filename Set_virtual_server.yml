@@ -14,5 +14,5 @@
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
-    when: '"{{name_irule}}"is defined and ({{name_irule}}|length>0)'
+    when: '"{{name_irule}}"is defined and ("{{name_irule}}"|length>0)'
    
