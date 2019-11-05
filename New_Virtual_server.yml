@@ -1,0 +1,36 @@
+---
+- name: virtual server
+  hosts: all
+  connection: local
+
+  tasks: 
+  - name: Create virtual server
+    bigip_virtual_server:
+      state: present
+      partition: "{{partition}}"
+      name: "{{name_server}}"
+      destination: "{{ip}}" # publiek IP 
+      ip_protocol: "tcp"
+      port: "443" #external port
+      pool: "{{pool_name}}"
+      snat: Automap  # Source Address Translation = Auto Map
+      description: "{{description}}"
+      profiles:
+        -  /Common/request-log # pas aan naar correcte !!!!!!!!!!!!!!!!!!!!! na creatie partitie 
+        - name: tcp-mobile-optimized
+          context: client-side
+        - name: tcp-lan-optimized
+          context: server-side
+        - name: "{{ssl_client}}"
+          context: client-side
+        - name: "{{ssl_server}}"
+          context: server-side 
+      enabled_vlans:
+        - /Common/vlan4012
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
+   
