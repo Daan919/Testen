@@ -4,18 +4,6 @@
   connection: local
 
   tasks: 
-  - name: add pool virtual server
-    bigip_virtual_server:
-      partition: "{{partition}}"
-      name: "{{name_server}}"
-      pool: "{{pool_name}}"
-      provider:
-        server_port: 443
-        server: 192.168.201.251
-        validate_certs: no
-    delegate_to: localhost
-    when: '"treu" in "{{check_pool}}"'
- 
   - name: add Irule virtual server
     bigip_virtual_server:
       partition: "{{partition}}"
@@ -26,5 +14,5 @@
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
-    when: '"treu" in "{{check_rule}}"'
+    when: '"{{check_rule}}"is defined and ({{check_rule}}|length>0)'
    
