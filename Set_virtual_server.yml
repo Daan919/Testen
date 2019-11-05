@@ -1,0 +1,20 @@
+---
+- name: virtual server
+  hosts: all
+  connection: local
+
+  tasks: 
+  - name: Create virtual server
+    bigip_virtual_server:
+      state: present
+      partition: "{{partition}}"
+      name: "{{name_server}}"
+      pool: "{{pool_name}}"
+      profiles:
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
+   
