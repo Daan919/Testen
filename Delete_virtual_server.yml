@@ -1,0 +1,10 @@
+- name: Delete virtual server
+  bigip_virtual_server:
+    state: absent
+    partition: "{{partition}}"
+    name: "{{name_server}}"
+    provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+  delegate_to: localhost
