@@ -11,26 +11,17 @@
   - set_fact:
       z: "{{ x + [ i ] }}"    
 
-  - debug:  
-       var: x
-  - debug:
-       var: i
-  - debug:
-       var: z
-   
-
-
-  # - name: add Irule virtual server
-  #   bigip_virtual_server:
-  #     partition: "{{partition}}"
-  #     name: "{{name_server}}"
-  #     irules: "{{val3}}"
-  #     provider:
-  #       server_port: 443
-  #       server: 192.168.201.251
-  #       validate_certs: no
-  #   delegate_to: localhost
-  #   when: '"{{val3}}"is defined and ("{{val3}}"|length>0)'
+  - name: add Irule virtual server
+    bigip_virtual_server:
+      partition: "{{partition}}"
+      name: "{{name_server}}"
+      irules: "{{z}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+    when: '"{{z}}"is defined and ("{{z}}"|length>0)'
 
 
    
