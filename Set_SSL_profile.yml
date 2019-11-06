@@ -4,14 +4,30 @@
   connection: local
 
   tasks: 
+    - set_fact:
+      x: "{{ client_array.split(':') }}"
+      i: "{{client_ssl}}"
+
+    - set_fact:
+      v: "{{ server_array.split(':') }}"
+      l: "{{server_ssl}}"
+
+    - set_fact:
+      z: "{{ x + [ i ] }}"  
+      r: "{{ v + [ l ] }}" 
+
+    - set_fact:
+      k: "{{z + r}}"  
+
     - name: add SSH client profile virtual server
       bigip_virtual_server:
         partition: "{{partition}}"
         name: "{{name_server}}"
-        profiles: "{{client_ssl}}"
+        profiles: "{{k}}"
         provider:
           server_port: 443
           server: 192.168.201.251
           validate_certs: no
       delegate_to: localhost
-      when: '"{{client_ssl}}"is defined and ("{{client_ssl}}"|length>0)'
+      when: '"{{k}}"is defined and ("{{k}}"|length>0)'
+
