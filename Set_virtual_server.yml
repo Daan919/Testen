@@ -8,8 +8,7 @@
       x: "{{ irule_array.split(':') }}"
     
 
-  - debug:
-      debug: var=x
+  - debug:  var=x
        
    
 
