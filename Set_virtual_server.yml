@@ -7,7 +7,7 @@
   - set_fact:
       x: "{{ irule_array.split(':') }}"
       y: "{{name_irule}}"
-      z: "{{x + [y] }}"    
+   #   z: "{{x + [y] }}"    
 
   - debug:  var=z
        
