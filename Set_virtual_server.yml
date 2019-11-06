@@ -9,7 +9,7 @@
       y: "{{name_irule}}"
       z: "{{ x + [ y ] }}"    
 
-  - debug:  var=z
+  - debug:  var=x var=y var=z
        
    
 
