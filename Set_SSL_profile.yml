@@ -5,19 +5,15 @@
 
   tasks: 
     - set_fact:
-      x: "{{ client_array.split(':') }}"
+      x: "{{ array_profiles.split(':') }}"
       i: "{{client_ssl}}"
-
-    - set_fact:
-      v: "{{ server_array.split(':') }}"
       l: "{{server_ssl}}"
 
     - set_fact:
-      z: "{{ x + [ i ] }}"  
-      r: "{{ v + [ l ] }}" 
+      v: "{{ x + [ i ] }}"
 
     - set_fact:
-      k: "{{z + r}}"  
+      k: "{{ v + [ l ] }}"  
 
     - name: add SSH client profile virtual server
       bigip_virtual_server:
