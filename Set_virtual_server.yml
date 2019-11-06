@@ -5,21 +5,23 @@
 
   tasks: 
   - set_fact:
-      arr1: "{{name_irule}}"
-      arr2: "{{irule_array}}"
-      irule:  "{{arr1 + arr2}}"
+      val1: "{{ irule_array.split(':') }}"
+      val2: "{{name_irule}}"
+      val3: "{{val1 + [ val2 ] }}"
+
+
 
   - name: add Irule virtual server
     bigip_virtual_server:
       partition: "{{partition}}"
       name: "{{name_server}}"
-      irules: "{{irule}}"
+      irules: "{{arry}}"
       provider:
         server_port: 443
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
-    when: '"{{irule}}"is defined and ("{{irule}}"|length>0)'
+    when: '"{{arry}}"is defined and ("{{arry}}"|length>0)'
 
 
    
