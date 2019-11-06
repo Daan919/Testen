@@ -16,15 +16,5 @@
     delegate_to: localhost
     when: '"{{name_irule}}"is defined and ("{{name_irule}}"|length>0)'
 
-  - name: add SSH client profile virtual server
-    bigip_virtual_server:
-      partition: "{{partition}}"
-      name: "{{name_server}}"
-      profiles: "{{client_ssl}}"
-      provider:
-        server_port: 443
-        server: 192.168.201.251
-        validate_certs: no
-    delegate_to: localhost
-    when: '"{{client_ssl}}"is defined and ("{{client_ssl}}"|length>0)'
+
    
