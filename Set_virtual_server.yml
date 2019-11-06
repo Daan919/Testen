@@ -5,7 +5,10 @@
 
   tasks: 
   - set_fact:
-      val1: "{{ irule_array.split(':') }}"
+      x: "{{irule_array}}"
+      val1: "val1 + x"
+      with_items: "{{ x.split('arn:') }}"
+      
       val2: "{{name_irule}}"
       val3: "{{val1 + [ val2 ] }}"
 
