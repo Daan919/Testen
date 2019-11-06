@@ -9,8 +9,8 @@
     
 
   - debug:
-      debug:
-        msg: "{{ x }}"
+      debug: var=x
+       
    
 
 
