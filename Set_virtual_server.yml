@@ -9,19 +9,17 @@
       val2: "{{name_irule}}"
       val3: "{{val1 + [ val2 ] }}"
 
-
-
   - name: add Irule virtual server
     bigip_virtual_server:
       partition: "{{partition}}"
       name: "{{name_server}}"
-      irules: "{{arry}}"
+      irules: "{{val3}}"
       provider:
         server_port: 443
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
-    when: '"{{arry}}"is defined and ("{{arry}}"|length>0)'
+    when: '"{{val3}}"is defined and ("{{val3}}"|length>0)'
 
 
    
