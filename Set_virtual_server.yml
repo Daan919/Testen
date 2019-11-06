@@ -6,8 +6,9 @@
   tasks: 
   - set_fact:
       x: "{{ irule_array.split(':') }}"
-      i: 
-        - "{{name_irule}}"
+      i: "{{name_irule}}"
+
+  - set_fact:
       z: "{{ x + [ i ] }}"    
 
   - debug:  
