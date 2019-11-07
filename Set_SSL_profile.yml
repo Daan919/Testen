@@ -15,9 +15,7 @@
     bigip_virtual_server:
       partition: "{{partition}}"
       name: "{{name_server}}"
-      profiles:
-        - name: "{{v}}"
-          context: client-side
+      profiles: "{{v}}" 
         - name: tcp-lan-optimized
           context: server-side
         - name: tcp-mobile-optimized
