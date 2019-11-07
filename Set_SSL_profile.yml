@@ -7,23 +7,23 @@
     - set_fact:
       x: "{{ array_profiles.split(':') }}"
       i: "{{client_ssl}}"
-      l: "{{server_ssl}}"
+
+    - debug: var=x
+    - debug: var=i
+      
 
     - set_fact:
       v: "{{ x + [ i ] }}"
-
-    - set_fact:
-      k: "{{ v + [ l ] }}"  
 
     - name: add SSH client profile virtual server
       bigip_virtual_server:
         partition: "{{partition}}"
         name: "{{name_server}}"
-        profiles: "{{k}}"
+        profiles: "{{v}}"
         provider:
           server_port: 443
           server: 192.168.201.251
           validate_certs: no
       delegate_to: localhost
-      when: '"{{k}}"is defined and ("{{k}}"|length>0)'
+      when: '"{{v}}"is defined and ("{{v}}"|length>0)'
 
