@@ -7,15 +7,9 @@
   - set_fact:
       x: "{{ array_profiles.split(':') }}"
       i: "{{client_ssl}}"
-
-  - debug: var=x
-  - debug: var=i
       
-
   - set_fact:
       v: "{{ x + [ i ] }}"
-
-  - debug: var=v
 
   - name: add SSH client profile virtual server
     bigip_virtual_server:
