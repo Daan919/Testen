@@ -5,28 +5,20 @@
 
   tasks: 
   - set_fact:
-      x: "{{ array_profiles.split(':') }}"
       i: "{{client_ssl}}"
+      v: "{{name_server}}"
 
-  - set_fact:
-      v: "{{ x + [ i ] }}"
-
-  - name: add SSH client profile virtual server
-    bigip_virtual_server:
-      partition: "{{partition}}"
-      name: "{{name_server}}"
-      profiles: 
-        - "{{v}}" 
-        - name: tcp-lan-optimized
-          context: server-side
-        - name: tcp-mobile-optimized
-          context: client-side
+  - name: add new ssh profile 
+    bigip_command:
+      commands: mod ltm virtual "{{v}}" profiles add { "{{i}}" { context clientside } 
+      chdir: "{{partition}}"
       provider:
         server_port: 443
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
-    when: '"{{v}}"is defined and ("{{v}}"|length>0)'
+
+
 
    
 
