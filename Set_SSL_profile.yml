@@ -10,7 +10,7 @@
 
   - name: add new ssh profile 
     bigip_command:
-      commands: mod ltm virtual "{{v}}" profiles add { "{{i}}" { context clientside } }
+      commands: mod ltm virtual "{{name_server}}" profiles add { "{{client_ssl}}" { context clientside } }
       chdir: "{{partition}}"
       provider:
         server_port: 443
