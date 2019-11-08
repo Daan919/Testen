@@ -1,20 +1,19 @@
 ---
-- name: virtual server
+- name: virtual server remove SSL
   hosts: all
   connection: local
 
   tasks: 
   - set_fact:
-      i: "{{client_ssl}}"
+      i: "{{ssl_profile}}"
       v: "{{name_server}}"
 
-  - name: add new ssh profile 
+  - name: Remove ssh profile 
     bigip_command: # 1 ssl profile moet defould sni hebben 
-      commands: mod ltm virtual "{{name_server}}" profiles add { "{{client_ssl}}" { context clientside } }
+      commands: mod ltm virtual "{{name_server}}" profiles delete { "{{ssl_profile}}"  }
       chdir: "{{partition}}"
       provider:
         server_port: 443
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
-
