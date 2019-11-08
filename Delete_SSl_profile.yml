@@ -1,0 +1,17 @@
+---
+- name: virtual server remove SSL
+  hosts: all
+  connection: local
+
+  tasks: 
+  - name: Create client SSL profile
+    bigip_profile_client_ssl:
+      state: absent
+      name: "{{ssl_profile}}"
+      partition: "{{partition}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
