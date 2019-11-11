@@ -24,6 +24,7 @@
           context: client-side
         - name: "{{ssl_server}}"
           context: server-side 
+        - name: /Common/request-log
       enabled_vlans:
         - /Common/vlan4012
       provider:
