@@ -14,9 +14,7 @@
       name: "{{data_groupe}}"
       internal: yes
       partition: "{{partition}}"
-      records:
-      - key: "{{s}}"
-        value: ""
+      records_src: /tmp/data_groupe.txt
       type: address
       provider:
         server_port: 443
