@@ -9,7 +9,8 @@
   - name: Create a data group of IP addresses from a file
     bigip_data_group:
       name: "{{data_groupe}}"
-      records_src: /tmp/dg-file
+      partition: "{{partition}}"
+      records_src: /tmp/data_groupe
       type: address
       provider:
         server_port: 443
