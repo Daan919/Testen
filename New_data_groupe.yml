@@ -1,11 +1,10 @@
-
 ---
 - name: virtual server remove SSL
   hosts: all
   connection: local
 
   tasks: 
-  - copy: content="{{data_group_data}}" dest=/tmp/data_groupe
+  - copy: content="{{data_groupe_data}}" dest=/tmp/data_groupe
 
   - name: Create a data group of IP addresses from a file
     bigip_data_group:
