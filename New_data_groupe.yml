@@ -6,11 +6,17 @@
   tasks: 
   - copy: content="{{data_groupe_data}}" dest=/tmp/data_groupe.txt
 
+  set_fact:
+  - s: "{{data_groupe_data}}"
+
   - name: Create a data group of IP addresses from a file
     bigip_data_group:
       name: "{{data_groupe}}"
+      internal: yes
       partition: "{{partition}}"
-      records_src: "/tmp/data_groupe.txt"
+      records:
+      - key: "{{s}}"
+        value: ""
       type: address
       provider:
         server_port: 443
