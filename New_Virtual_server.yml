@@ -15,7 +15,7 @@
       snat: Automap  # Source Address Translation = Auto Map
       description: "{{description}}"
       profiles:
-        -  /Common/request-log # pas aan naar correcte !!!!!!!!!!!!!!!!!!!!! na creatie partitie 
+       # -  /Common/request-log # pas aan naar correcte !!!!!!!!!!!!!!!!!!!!! na creatie partitie 
         - name: tcp-mobile-optimized
           context: client-side
         - name: tcp-lan-optimized
