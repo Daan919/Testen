@@ -1,0 +1,19 @@
+
+---
+- name: virtual server remove SSL
+  hosts: all
+  connection: local
+
+  tasks: 
+  - copy: content="{{data_group_data}}" dest=/tmp/data_groupe
+
+  - name: Create a data group of IP addresses from a file
+    bigip_data_group:
+      name: "{{data_groupe}}"
+      records_src: /path/to/dg-file
+      type: address
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+      delegate_to: localhost
