@@ -11,6 +11,7 @@
       partition: "{{partition}}"
       internal: yes
       records:
+        - records_content:
         - key: "{{key}}"
           value: "{{value}}"
       type: address
