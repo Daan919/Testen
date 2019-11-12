@@ -5,7 +5,7 @@
   
   tasks: 
   - name: add new record to data griyoe
-    bigip_command: # 1 ssl profile moet defould sni hebben 
+    bigip_command: 
       commands: modify ltm data-group internal "{{data_groupe}}" records add {"{{key}}" { data "{{value}}" } }
       chdir: "{{partition}}"
       provider:
