@@ -6,7 +6,7 @@
   tasks: 
   - name: add new record to 
     bigip_command: # 1 ssl profile moet defould sni hebben 
-      commands: mod internal "{{data_groupe}}" records [add] {"{{key}}" { data ["{{value}}"] } }
+      commands: mod  "{{data_groupe}}" records [add] {"{{key}}" { data ["{{value}}"] } }
       chdir: "{{partition}}"
       provider:
         server_port: 443
