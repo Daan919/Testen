@@ -1,0 +1,16 @@
+---
+- name: Delete pool
+  hosts: all
+  connection: local
+  
+  tasks: 
+  - name: Delete pool
+    bigip_pool:
+      state: absent
+      name: "{{name_pool}}"
+      partition: "{{partition}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
