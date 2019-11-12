@@ -10,7 +10,7 @@
       name: "{{data_groupe}}"
       partition: "{{partition}}"
       internal: yes
-      records_content:
+      records:
         - key: "{{key}}"
           value: "{{value}}"
       type: address
