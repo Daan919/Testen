@@ -15,7 +15,6 @@
       snat: Automap  # Source Address Translation = Auto Map
       description: "{{description}}"
       profiles:
-       # -  /Common/request-log # pas aan naar correcte !!!!!!!!!!!!!!!!!!!!! na creatie partitie 
         - name: tcp-mobile-optimized
           context: client-side
         - name: tcp-lan-optimized
@@ -24,9 +23,9 @@
           context: client-side
         - name: "{{ssl_server}}"
           context: server-side 
-        - name: /Common/request-log
+        - name: /Common/request-log # -  /Common/request-log # pas aan naar correcte !!!!!!!!!!!!!!!!!!!!! na creatie partitie + dynamisch maken
       enabled_vlans:
-        - /Common/vlan4012
+        - /Common/vlan4012  # vlan extern
       provider:
         server_port: 443
         server: 192.168.201.251

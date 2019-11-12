@@ -4,22 +4,10 @@
   connection: local
   
   tasks: 
-  # - name: emty data group 
-  #   bigip_data_group:
-  #     name: "{{data_groupe}}"
-  #     partition: "{{partition}}"
-  #     records:
-  #     provider:
-  #       server_port: 443
-  #       server: 192.168.201.251
-  #       validate_certs: no
-  #   delegate_to: localhost
-  
-  - name: Delete data group 
-    bigip_data_group:
-      name: "{{data_groupe}}"
-      partition: "{{partition}}"
-      state: absent
+  - name: add new record to data griyoe
+    bigip_command: 
+      commands: delete ltm data-group internal "{{data_groupe}}"
+      chdir: "{{partition}}"
       provider:
         server_port: 443
         server: 192.168.201.251
