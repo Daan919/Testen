@@ -4,16 +4,16 @@
   connection: local
   
   tasks: 
-  - name: emty data group 
-    bigip_data_group:
-      name: "{{data_groupe}}"
-      partition: "{{partition}}"
-      records:
-      provider:
-        server_port: 443
-        server: 192.168.201.251
-        validate_certs: no
-    delegate_to: localhost
+  # - name: emty data group 
+  #   bigip_data_group:
+  #     name: "{{data_groupe}}"
+  #     partition: "{{partition}}"
+  #     records:
+  #     provider:
+  #       server_port: 443
+  #       server: 192.168.201.251
+  #       validate_certs: no
+  #   delegate_to: localhost
   
   - name: Delete data group 
     bigip_data_group:
