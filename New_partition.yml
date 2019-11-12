@@ -13,6 +13,7 @@
     - name: Create partition 
       bigip_partition:
         name: "{{partotion}}"
+        description: "{{discription}}"
         provider:
         server_port: 443
         server: 192.168.201.251
@@ -21,23 +22,13 @@
 
     - name: add new logging request porfile
       bigip_command: # 1 ssl profile moet defould sni hebben 
-       commands:  create request-log ["{{v}}"] log-request-logging-errors [enabled]
-            log-response-by-default [enabled]
-            log-response-logging-error [enabled]
-            proxy-close-on-error [enabled]
-            proxy-respond-on-logging-error [enabled]
-            request-log-error-pool [ [pool_name] | none ]
-            request-log-error-protocol [ TCP ]
+       commands:  create request-log ["{{v}}"] log-request-logging-errors [enabled] log-response-by-default [enabled] log-response-logging-error [enabled] proxy-close-on-error [enabled] proxy-respond-on-logging-error [enabled] request-log-error-pool [ [pool_name] | none ] request-log-error-protocol [ TCP ]
             request-log-error-template [string]                   TEMPLATE ?????
-            request-log-pool [ [pool_name] | none ]
-            request-log-protocol [ TCP ]
+            request-log-pool [ [pool_name] | none ] request-log-protocol [ TCP ]
             request-log-template [string]                         TEMPLATE?????? 
-            request-logging [enabled]
-            response-log-error-pool [ [pool_name] | none ]
-            response-log-error-protocol [ TCP ]
+            request-logging [enabled] response-log-error-pool [ [pool_name] | none ] response-log-error-protocol [ TCP ]
             response-log-error-template [string ]                  TEMPLATE?????
-            response-log-pool [ [pool_name] | none ]
-            response-log-protocol [ TCP ]
+            response-log-pool [ [pool_name] | none ] response-log-protocol [ TCP ]
             response-log-template [string ]                        TEMPLATE?????
             response-logging [ enabled ]
        chdir: "{{partition}}"
