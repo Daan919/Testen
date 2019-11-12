@@ -19,7 +19,7 @@
     bigip_data_group:
       name: "{{data_groupe}}"
       partition: "{{partition}}"
-      state: present
+      state: absent
       provider:
         server_port: 443
         server: 192.168.201.251
