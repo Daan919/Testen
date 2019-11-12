@@ -11,7 +11,7 @@
       internal: yes
       partition: "{{partition}}"
       records_content:
-        - key: "{{Key}}"
+        - key: "{{key}}"
           value: "{{value}}"
       type: address
       provider:
