@@ -19,7 +19,7 @@
     bigip_data_group:
       name: "{{data_groupe}}"
       partition: "{{partition}}"
-      state: absent
+      state: present
       delete_data_group_file: yes
       provider:
         server_port: 443
