@@ -20,7 +20,6 @@
       name: "{{data_groupe}}"
       partition: "{{partition}}"
       state: present
-      delete_data_group_file: yes
       provider:
         server_port: 443
         server: 192.168.201.251
