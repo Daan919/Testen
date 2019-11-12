@@ -9,6 +9,7 @@
     bigip_data_group:
       name: "{{data_groupe}}"
       partition: "{{partition}}"
+      internal: yes
       records:
         - key: "{{key}}"
           value: "{{value}}"
