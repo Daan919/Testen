@@ -6,7 +6,7 @@
   
   tasks:
   - set_fact:
-      string: Geen monitor gevonden
+      string: "Geen monitor gevonden"
       a: "{{all_monitor}}"
   - debug: var=a
 
