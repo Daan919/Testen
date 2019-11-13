@@ -8,7 +8,7 @@
   - set_fact:
       a: "{{ all_monitor.split('and ') }}"
   - set_fact:
-      b: x + ["{{monitor}}"]
+      b: a + ["{{monitor}}"]
 
   - debug: var=b
 
