@@ -6,11 +6,11 @@
   
   tasks:
   - set_fact:
-      a: "{{ all_monitor.split('and') }}"
+      a: "{{ all_monitor.split('and ') }}"
   - set_fact:
       b: x + ["{{monitor}}"]
 
-  - debug: var=a
+  - debug: var=b
 
   - name: Set a monitor 
     bigip_pool:
