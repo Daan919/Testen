@@ -8,18 +8,16 @@
   - set_fact:
       a: "{{all_monitor}}"
 
-  - debug: var=a
-
   - set_fact:
       a: "{{ a.split('and ') }}"
-      when: '"Geen monitor gevonden" not in a'
 
   - debug: var=a
 
   - set_fact:
       c: "{{monitor}}"
   - set_fact:
-      b: "{{a + [c] }}"
+      c: "{{a + [c] }}"
+    when: '"Geen monitor gevonden" not in a'
 
   - debug: var=b
 
@@ -28,7 +26,7 @@
       state: present
       name: "{{name_pool}}"
       partition: "{{partition}}"
-      monitors: "{{b}}"        
+      monitors: "{{c}}"        
       provider:
         server_port: 443
         server: 192.168.201.251
