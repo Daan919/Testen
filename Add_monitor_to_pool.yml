@@ -7,18 +7,20 @@
   tasks:
   - set_fact:
       a: "{{ all_monitor.split('and') }}"
+  - set_fact:
+      b: x + ["{{monitor}}"]
 
   - debug: var=a
 
-  # - name: Set a monitor 
-  #   bigip_pool:
-  #     state: present
-  #     name: "{{name_pool}}"
-  #     partition: "{{partition}}"
-  #     monitors: "{{monitor}}"        
-  #     provider:
-  #         server_port: 443
-  #         server: 192.168.201.251
-  #         validate_certs: no
-  #     delegate_to: localhost
+  - name: Set a monitor 
+    bigip_pool:
+      state: present
+      name: "{{name_pool}}"
+      partition: "{{partition}}"
+      monitors: "{{b}}"        
+      provider:
+          server_port: 443
+          server: 192.168.201.251
+          validate_certs: no
+      delegate_to: localhost
 
