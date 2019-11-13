@@ -6,14 +6,13 @@
   
   tasks:
   - set_fact:
-      string: "Geen monitor gevonden"
       a: "{{all_monitor}}"
+
   - debug: var=a
-  - debug: var=string
 
   - set_fact:
       a: "{{ a.split('and ') }}"
-      when: 'string != a'
+      when: '"Geen monitor gevonden" not in a'
 
   - debug: var=a
 
