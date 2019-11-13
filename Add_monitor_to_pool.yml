@@ -7,8 +7,9 @@
   tasks:
   - set_fact:
       a: "{{ all_monitor.split('and ') }}"
+      c: "{{monitor}}"
   - set_fact:
-      b: a + ["{{monitor}}"]
+      b: "{{a + [c] }}"
 
   - debug: var=b
 
