@@ -8,6 +8,7 @@
   - set_fact:
       string: Geen monitor gevonden
       a: "{{all_monitor}}"
+  - debug: var=a
 
   - set_fact:
       a: "{{ a.split('and ') }}"
