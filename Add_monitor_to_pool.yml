@@ -7,11 +7,11 @@
   tasks:
   - set_fact:
       string: Geen monitor gevonden
-      a: 
+      a: "{{all_monitor}}"
 
   - set_fact:
-      a: "{{ all_monitor.split('and ') }}"
-      when: string not in "{{all_monitor}}"
+      a: "{{ a.split('and ') }}"
+      when: string not in a
 
   - debug: var=a
 
