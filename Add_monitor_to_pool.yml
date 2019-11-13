@@ -11,7 +11,7 @@
 
   - set_fact:
       a: "{{ all_monitor.split('and ') }}"
-      when: string not in all_monitor
+      when: string not in "{{all_monitor}}"
 
   - debug: var=a
 
