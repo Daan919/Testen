@@ -18,9 +18,9 @@
         name: "{{k}}"
         description: "{{discription}}"
         provider:
-        server_port: 443
-        server: 192.168.201.251
-        validate_certs: no
+          server_port: 443
+          server: 192.168.201.251
+          validate_certs: no
       delegate_to: localhost
 
     - name: add new logging request porfile
