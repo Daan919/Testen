@@ -7,19 +7,15 @@
   tasks:
   - set_fact:
       a: "{{all_monitor}}"
-
   - set_fact:
       a: "{{ a.split('and ') }}"
-
-  - debug: var=a
-
   - set_fact:
       c: "{{monitor}}"
   - set_fact:
       c: "{{a + [c] }}"
     when: '"Geen monitor gevonden" not in a'
 
-  - debug: var=b
+  - debug: var=c
 
   - name: Set a monitor 
     bigip_pool:

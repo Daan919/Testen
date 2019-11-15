@@ -8,7 +8,7 @@
     - set_fact:
       i: "{{partition}}"
     - set_fact:
-      v: rlog_ + i + _defould_tcp
+      v: rlog_ + i + _defauld_tcp
 
     - name: Create partition 
       bigip_partition:
@@ -22,15 +22,27 @@
 
     - name: add new logging request porfile
       bigip_command: # 1 ssl profile moet defould sni hebben 
-       commands:  create request-log ["{{v}}"] log-request-logging-errors [enabled] log-response-by-default [enabled] log-response-logging-error [enabled] proxy-close-on-error [enabled] proxy-respond-on-logging-error [enabled] request-log-error-pool [ [pool_name] | none ] request-log-error-protocol [ TCP ]
-            request-log-error-template [string]                   TEMPLATE ?????
-            request-log-pool [ [pool_name] | none ] request-log-protocol [ TCP ]
-            request-log-template [string]                         TEMPLATE?????? 
-            request-logging [enabled] response-log-error-pool [ [pool_name] | none ] response-log-error-protocol [ TCP ]
-            response-log-error-template [string ]                  TEMPLATE?????
-            response-log-pool [ [pool_name] | none ] response-log-protocol [ TCP ]
-            response-log-template [string ]                        TEMPLATE?????
-            response-logging [ enabled ]
+       commands:  create request-log ["{{v}}"] defaults-from Common/request-log # maak een template request logging aan voor dat dit werkt  
+       chdir: "{{partition}}"
+       provider:
+         server_port: 443
+         server: 192.168.201.251
+         validate_certs: no
+      delegate_to: localhost
+
+    - name: mod loggin request 
+      bigip_command: # 1 ssl profile moet defould sni hebben 
+       commands:  modify request-log ["{{v}}"] request-log-template $BIGIP_HOSTNAME cloud Request client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}
+       chdir: "{{partition}}"
+       provider:
+         server_port: 443
+         server: 192.168.201.251
+         validate_certs: no
+      delegate_to: localhost
+
+    - name: mod loggin request 
+      bigip_command: # 1 ssl profile moet defould sni hebben 
+       commands:  modify request-log ["{{v}}"] response-log-template $BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}
        chdir: "{{partition}}"
        provider:
          server_port: 443
