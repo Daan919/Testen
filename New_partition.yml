@@ -10,12 +10,13 @@
         discription: jaja
         ptn: 'ptn_'
         rlog: 'rlog_'
-        def: '_defauld_tcp'
+        def: '_defauld'
+        tcp: '_tcp'
     - set_fact:
         k: "{{ptn}}--{{i}}"
 
     - set_fact:
-        v: "{{rlog_}}--{{i}}--{{def}}"  
+        v: "{{rlog_}}--{{i}}--{{def}}--{{tcp}}"  
 
     - name: Create partition 
       bigip_partition:
