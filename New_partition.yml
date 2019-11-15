@@ -6,12 +6,12 @@
 
   tasks: 
     - set_fact:
-      i: "{{partition}}"
-      discription: jaja
+        i: "{{partition}}"
+        discription: jaja
     - set_fact:
-      k: ptn_ + i 
+        k: ptn_ + i 
     - set_fact:
-      v: rlog_ + i + _defauld_tcp
+        v: rlog_ + i + _defauld_tcp
 
     - name: Create partition 
       bigip_partition:
