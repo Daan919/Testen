@@ -10,6 +10,7 @@
         discription: jaja
         ptn: 'ptn_'
         rlog: 'rlog_'
+    - set_fact:
         def: 'defauld'
         tcp: 'tcp'
     - set_fact:
