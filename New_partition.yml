@@ -14,10 +14,10 @@
         de: 'defauld'
         tcp: 'tcp'
     - set_fact:
-        k: "{{ptn}}--{{i}}"
+        k: "{{ptn}}{{i}}"
 
     - set_fact:
-        v: "{{rlog}}--{{i}}--_--{{de}}--_--{{tcp}}"  
+        v: "{{rlog}}{{i}}_{{de}}_{{tcp}}"  
 
     - debug: var=v
 
