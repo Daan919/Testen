@@ -11,13 +11,13 @@
         ptn: 'ptn_'
         rlog: 'rlog_'
     - set_fact:
-        def: 'defauld'
+        de: 'defauld'
         tcp: 'tcp'
     - set_fact:
         k: "{{ptn}}--{{i}}"
 
     - set_fact:
-        v: "{{rlog}}--{{i}}--_--{{def}}--_--{{tcp}}"  
+        v: "{{rlog}}--{{i}}--_--{{de}}--_--{{tcp}}"  
 
     - debug: var=v
 
