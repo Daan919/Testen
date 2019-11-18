@@ -28,7 +28,7 @@
 
     - name: add new logging request porfile
       bigip_command: # 1 ssl profile moet defould sni hebben 
-       commands:  create ltm profile request-log "{{v}}" defaults-from /Common/request-log # maak een template request logging aan voor dat dit werkt  
+       commands:  create ltm profile request-log "{{v}}" defaults-from /Common/rlog_default # maak een template request logging aan voor dat dit werkt  
        chdir: "{{k}}"
        provider:
          server_port: 443
