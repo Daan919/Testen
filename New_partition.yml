@@ -8,15 +8,11 @@
     - set_fact:
         i: "{{partition}}"
         ptn: 'ptn_'
-        rlog: 'rlog_'
-        de: 'defauld'
-        tcp: 'tcp'
-        template1: "%24BIGIP_HOSTNAME%20cloud%20Request%20client%3D%24CLIENT_IP%3A%24CLIENT_PORT%20vip%3D%24VIRTUAL_IP%3A%24VIRTUAL_PORT%20pool%3D%24VIRTUAL_POOL_NAME%20snat%3D%24SNAT_IP%3A%24SNAT_PORT%20server%3D%24SERVER_IP%3A%24SERVER_PORT%20site%3D%24%7BHost%7D%20path%3D%24HTTP_PATH%20request%3D%24HTTP_REQUEST%20UserAgent%3D%24%7BUser-agent%7D%20vs%3D%24VIRTUAL_NAME%20status%3D%24HTTP_STATUS%20time-taken%3D%24RESPONSE_MSECS%20sc-bytes%3D%24RESPONSE_SIZE%20via%3D%24%7BVia%7D"
-        #$BIGIP_HOSTNAME cloud Request client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}
+        template1: "$BIGIP_HOSTNAME cloud Request client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}"
         template2: "$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}"
     - set_fact:
         k: '{{ptn}}{{i}}'
-        v: '{{rlog}}{{i}}_{{de}}_{{tcp}}'  
+        v: 'rlog_{{i}}_defauld_http'  
 
     - name: Create partition 
       bigip_partition:
@@ -49,7 +45,7 @@
 
     - name: mod loggin request 
       bigip_command: # 1 ssl profile moet defould sni hebben response-logging enabled response-log-template ['{{template2}}']
-       commands:  modify ltm profile request-log '{{v}}' request-log-template '{{template1}}'
+       commands:  "modify ltm profile request-log '{{v}}' request-log-template '{{template1}}'"
        chdir: "{{k}}"
        provider:
          server_port: 443
