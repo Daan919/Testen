@@ -45,7 +45,7 @@
 
     - name: mod loggin request 
       bigip_command: # 1 ssl profile moet defould sni hebben response-logging enabled response-log-template ['{{template2}}']
-       commands:  "modify ltm profile request-log '{{v}}' request-log-template [{{template1}}]"
+       commands:  "modify ltm profile request-log {{v}} request-log-template [{{template1}}]"
        chdir: "{{k}}"
        provider:
          server_port: 443
