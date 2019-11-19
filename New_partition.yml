@@ -14,8 +14,8 @@
         k: "{{ptn}}{{i}}"
         v: "rlog_{{i}}_defauld_http"
         template1: "{{l}}BIGIP_HOSTNAME cloud Request client={{l}}CLIENT_IP:{{l}}CLIENT_PORT vip={{l}}VIRTUAL_IP:{{l}}VIRTUAL_PORT pool={{l}}VIRTUAL_POOL_NAME snat={{l}}SNAT_IP:{{l}}SNAT_PORT server={{l}}SERVER_IP:{{l}}SERVER_PORT site={{l}}{Host} path={{l}}HTTP_PATH request={{l}}HTTP_REQUEST UserAgent={{l}}{User-agent} vs={{l}}VIRTUAL_NAME status={{l}}HTTP_STATUS time-taken={{l}}RESPONSE_MSECS sc-bytes={{l}}RESPONSE_SIZE via={{l}}"
-        template2: "{{l}}BIGIP_HOSTNAME cloud Response client={{l}}CLIENT_IP:{{l}}CLIENT_PORT vip={{l}}VIRTUAL_IP:{{l}}VIRTUAL_PORT pool={{l}}VIRTUAL_POOL_NAME snat={{l}}SNAT_IP:{{l}}SNAT_PORT server={{l}}SERVER_IP:{{l}}SERVER_PORT site={{l}}{Host} path={{l}}HTTP_PATH request={{l}}HTTP_REQUEST UserAgent={{l}}{User-agent} vs={{l}}VIRTUAL_NAME status={{l}}HTTP_STATUS time-taken={{l}}RESPONSE_MSECS sc-bytes={{l}}RESPONSE_SIZE via={{l}}{Via}"
-      
+        template2: {{"{{l}}BIGIP_HOSTNAME cloud Response client={{l}}CLIENT_IP:{{l}}CLIENT_PORT vip={{l}}VIRTUAL_IP:{{l}}VIRTUAL_PORT pool={{l}}VIRTUAL_POOL_NAME snat={{l}}SNAT_IP:{{l}}SNAT_PORT server={{l}}SERVER_IP:{{l}}SERVER_PORT site={{l}}{Host} path={{l}}HTTP_PATH request={{l}}HTTP_REQUEST UserAgent={{l}}{User-agent} vs={{l}}VIRTUAL_NAME status={{l}}HTTP_STATUS time-taken={{l}}RESPONSE_MSECS sc-bytes={{l}}RESPONSE_SIZE via={{l}}{Via}"}}
+
 
     # - name: Create partition
     #   bigip_partition:
