@@ -12,3 +12,4 @@
         organizational_unit: "OU=F5_partitions,OU=Hosting,DC=tesis,DC=corp"
         domain_username: "{{username}}"
         domain_password: "{{password}}"
+        domain_server: tAD901.tesis.corp
