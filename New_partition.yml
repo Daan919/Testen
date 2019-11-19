@@ -47,7 +47,7 @@
 
     - name: mod loggin request 
       bigip_command: # 1 ssl profile moet defould sni hebben response-logging enabled response-log-template ['{{template2}}']
-       commands: modify ltm profile request-log {{l}} {{v}} response-log-template {% raw %}"$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}"{% endraw %}
+       commands: modify ltm profile request-log {{v}} response-log-template {% raw %}"$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}"{% endraw %}
        chdir: "{{k}}"
        provider:
          server_port: 443
