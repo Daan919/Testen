@@ -16,34 +16,34 @@
         k: '{{ptn}}{{i}}'
         v: 'rlog_{{i}}_defauld_http'  
 
-    - name: Create partition 
-      bigip_partition:
-        name: "{{k}}"
-        provider:
-          server_port: 443
-          server: 192.168.201.251
-          validate_certs: no
-      delegate_to: localhost
+    # - name: Create partition 
+    #   bigip_partition:
+    #     name: "{{k}}"
+    #     provider:
+    #       server_port: 443
+    #       server: 192.168.201.251
+    #       validate_certs: no
+    #   delegate_to: localhost
 
-    - name: add new logging request porfile
-      bigip_command: # 1 ssl profile moet defould sni hebben 
-       commands:  create ltm profile request-log "{{v}}" defaults-from /Common/rlog_default # maak een template request logging aan voor dat dit werkt  
-       chdir: "{{k}}"
-       provider:
-         server_port: 443
-         server: 192.168.201.251
-         validate_certs: no
-      delegate_to: localhost
+    # - name: add new logging request porfile
+    #   bigip_command: # 1 ssl profile moet defould sni hebben 
+    #    commands:  create ltm profile request-log "{{v}}" defaults-from /Common/rlog_default # maak een template request logging aan voor dat dit werkt  
+    #    chdir: "{{k}}"
+    #    provider:
+    #      server_port: 443
+    #      server: 192.168.201.251
+    #      validate_certs: no
+    #   delegate_to: localhost
 
-    - name: mod loggin request 
-      bigip_command: # 1 ssl profile moet defould sni hebben #request-logging
-       commands:  modify ltm profile request-log '{{v}}' response-logging enabled 
-       chdir: "{{k}}"
-       provider:
-         server_port: 443
-         server: 192.168.201.251
-         validate_certs: no
-      delegate_to: localhost
+    # - name: mod loggin request 
+    #   bigip_command: # 1 ssl profile moet defould sni hebben #request-logging
+    #    commands:  modify ltm profile request-log '{{v}}' response-logging enabled 
+    #    chdir: "{{k}}"
+    #    provider:
+    #      server_port: 443
+    #      server: 192.168.201.251
+    #      validate_certs: no
+    #   delegate_to: localhost
 
     - name: mod loggin request 
       bigip_command: # 1 ssl profile moet defould sni hebben response-logging enabled response-log-template ['{{template2}}']
