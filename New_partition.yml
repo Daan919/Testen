@@ -54,3 +54,4 @@
          server: 192.168.201.251
          validate_certs: no
       delegate_to: localhost
+      ignore_errors: yes
