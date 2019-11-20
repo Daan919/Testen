@@ -17,7 +17,7 @@
 
     - name: Add a domain group to a domain group
       win_domain_group_membership:
-        name: "{{MIQgroupe}}"
+        name: "{{groupename}}"
         members:
-          - "{{groupename}}"
+          - "{{MIQgroupe}}"
         state: present
