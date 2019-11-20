@@ -1,7 +1,8 @@
 ---
 - name: Create new partition and logging profiles
   hosts: all
-  connection: local
+  gather_facts: no
+
 
   tasks:
     - name: Create group with delete protection enabled and custom attributes
