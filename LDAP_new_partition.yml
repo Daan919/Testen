@@ -10,7 +10,7 @@
         name: "{{groupename}}"
         scope: domainlocal
         category: security
-        organizational_unit: "OU=F5_partitions,OU=Hosting,DC=tesis,DC=corp"
+        organizational_unit: "OU=F5_partitions,OU=ManagedIQ,OU=Hosting,DC=tesis,DC=corp"
         domain_server: tAD901.tesis.corp
         domain_username: "{{ADusername}}"
         domain_password: "{{ADpassword}}"
