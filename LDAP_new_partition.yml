@@ -5,7 +5,7 @@
 
   tasks:
     - set_fact:
-        groupname: "{{partition}}"
+        groupename: "{{partition}}"
 
     - name: Create group with delete protection enabled and custom attributes
       win_domain_group: 
