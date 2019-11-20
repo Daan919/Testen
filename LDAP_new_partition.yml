@@ -15,3 +15,9 @@
         domain_username: "{{ADusername}}"
         domain_password: "{{ADpassword}}"
 
+    - name: Add a domain user/group to a domain group
+      win_domain_group_membership:
+        name: "{{MIQgroupe}}"
+        members:
+          - "{{groupename}}"
+        state: present
