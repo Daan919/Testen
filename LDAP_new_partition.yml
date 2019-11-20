@@ -1,6 +1,7 @@
 ---
 - name: Create new partition and logging profiles
   hosts: all
+  ansible_connection: winrm
 
 
   tasks:
