@@ -5,11 +5,9 @@
 
   tasks:
     - name: Create group with delete protection enabled and custom attributes
-      win_domain_group:
+      win_domain_group: 
         name: "{{groupename}}"
         scope: domainlocal
         category: security
         organizational_unit: "OU=F5_partitions,OU=Hosting,DC=tesis,DC=corp"
-        domain_username: "{{ADusername}}"
-        domain_password: "{{ADpassword}}"
         domain_server: tAD901.tesis.corp
