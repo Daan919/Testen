@@ -8,7 +8,7 @@
     - name: Create group with delete protection enabled and custom attributes
       win_domain_group: 
         name: "{{groupename}}"
-        scope: domainglobal
+        scope: global
         category: security
         organizational_unit: "OU=F5_partitions,OU=ManagedIQ,OU=Hosting,DC=tesis,DC=corp"
         domain_server: tAD901.tesis.corp
