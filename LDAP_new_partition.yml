@@ -6,7 +6,7 @@
   tasks:
     - set_fact:
         groupname: "{{partition}}"
-        
+
     - name: Create group with delete protection enabled and custom attributes
       win_domain_group: 
         name: "{{groupename}}"
@@ -22,4 +22,11 @@
         name: "{{groupename}}"
         members:
           - "{{MIQgroupe}}"
+        state: present
+
+    - name: Add a domain group to a domain group
+      win_domain_group_membership:
+        name: "{{groupename}}"
+        members:
+          - "manage_iq_admins"
         state: present
