@@ -5,58 +5,57 @@
   gather_facts: no
   
   tasks:
-    # - set_fact:
-    #     i: "{{partition}}"
-    #     ptn: "ptn_"
+    - set_fact:
+        i: "{{partition}}"
+        ptn: "ptn_"
 
            
-    # - name: Create names
-    #   set_fact:
-    #     k: "{{ptn}}{{i}}"
-    #     v: "rlog_{{i}}_defauld_http"
+    - name: Create names
+      set_fact:
+        k: "{{ptn}}{{i}}"
+        v: "rlog_{{i}}_defauld_http"
     # - set_fact:
     #     template1: '$BIGIP_HOSTNAME cloud Request client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}'
     #     template2: '$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}'
 
 
-    # - name: Create partition
-    #   bigip_partition:
-    #     name: "{{k}}"
-    #     provider:
-    #       server_port: 443
-    #       server: 192.168.201.251
-    #       validate_certs: no
-    #   delegate_to: localhost
-
-    # - name: add new logging request porfile
-    #   bigip_command: # 1 ssl profile moet defould sni hebben
-    #    commands:  create ltm profile request-log "{{v}}" defaults-from /Common/rlog_default # maak een template request logging aan voor dat dit werkt
-    #    chdir: "{{k}}"
-    #    provider:
-    #      server_port: 443
-    #      server: 192.168.201.251
-    #      validate_certs: no
-    #   delegate_to: localhost
-
-    # - name: mod loggin request
-    #   bigip_command: # 1 ssl profile moet defould sni hebben #request-logging
-    #    commands:  modify ltm profile request-log '{{v}}' response-logging enabled
-    #    chdir: "{{k}}"
-    #    provider:
-    #      server_port: 443
-    #      server: 192.168.201.251
-    #      validate_certs: no
-    #   delegate_to: localhost
- #     template2: '$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:                                                                                                                                                            server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}'
-
-    - name: mod loggin request
-      bigip_command: 
-        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template '$BIGIP_HOSTNAME {%raw%}cloud Response{%endraw%} client={%raw%}${%endraw%}CLIENT_IP:{%raw%}${%endraw%}CLIENT_PORT vip={%raw%}${%endraw%}VIRTUAL_IP:{%raw%}${%endraw%}VIRTUAL_PORT pool={%raw%}${%endraw%}VIRTUAL_POOL_NAME snat={%raw%}${%endraw%}SNAT_IP:{%raw%}${%endraw%}SNAT_PORT server={%raw%}${%endraw%}SERVER_IP:{%raw%}${%endraw%}SERVER_PORT'
-        chdir: ptn_test_20
+    - name: Create partition
+      bigip_partition:
+        name: "{{k}}"
         provider:
           server_port: 443
           server: 192.168.201.251
           validate_certs: no
       delegate_to: localhost
+
+    - name: add new logging request porfile
+      bigip_command: # 1 ssl profile moet defould sni hebben
+       commands:  create ltm profile request-log "{{v}}" defaults-from /Common/rlog_default # maak een template request logging aan voor dat dit werkt
+       chdir: "{{k}}"
+       provider:
+         server_port: 443
+         server: 192.168.201.251
+         validate_certs: no
+      delegate_to: localhost
+
+    - name: mod loggin request
+      bigip_command: # 1 ssl profile moet defould sni hebben #request-logging
+       commands:  modify ltm profile request-log '{{v}}' response-logging enabled
+       chdir: "{{k}}"
+       provider:
+         server_port: 443
+         server: 192.168.201.251
+         validate_certs: no
+      delegate_to: localhost
+
+    # - name: mod loggin request
+    #   bigip_command: 
+    #     commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template '$BIGIP_HOSTNAME {%raw%}cloud Response{%endraw%} client={%raw%}${%endraw%}CLIENT_IP:{%raw%}${%endraw%}CLIENT_PORT vip={%raw%}${%endraw%}VIRTUAL_IP:{%raw%}${%endraw%}VIRTUAL_PORT pool={%raw%}${%endraw%}VIRTUAL_POOL_NAME snat={%raw%}${%endraw%}SNAT_IP:{%raw%}${%endraw%}SNAT_PORT server={%raw%}${%endraw%}SERVER_IP:{%raw%}${%endraw%}SERVER_PORT'
+    #     chdir: ptn_test_20
+    #     provider:
+    #       server_port: 443
+    #       server: 192.168.201.251
+    #       validate_certs: no
+    #   delegate_to: localhost
 
 
