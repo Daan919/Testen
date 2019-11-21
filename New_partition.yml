@@ -49,7 +49,7 @@
 
     - name: mod loggin request
       bigip_command: 
-        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template "$BIGIP_HOSTNAME cloud  client=$CLIENT_IP:$CLIENT_PORT"
+        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template "$BIGIP_HOSTNAME "
         retries: 100
         chdir: ptn_test_20
         provider:
