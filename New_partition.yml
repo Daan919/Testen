@@ -51,8 +51,7 @@
 
     - name: mod loggin request
       bigip_command: 
-        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template '$BIGIP_HOSTNAME {%raw%}cloud Response client={%endraw%}$CLIENT_IP{%raw%}:{%endraw%}$CLIENT_PORT'
-        retries: 100
+        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template '$BIGIP_HOSTNAME {%raw%}cloud Response{%endraw%} client=$CLIENT_IP{%raw%}:{%endraw%}$CLIENT_PORT'
         chdir: ptn_test_20
         provider:
           server_port: 443
