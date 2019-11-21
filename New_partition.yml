@@ -50,7 +50,7 @@
 
     - name: mod loggin request
       bigip_command: 
-        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template "$BIGIP_HOSTNAME {%raw%}cloud Response{%endraw%} client=$CLIENT_IP{%raw%}:{%endraw%}$CLIENT_PORT vip=$VIRTUAL_IP{%raw%}:{%endraw%}$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP{%raw%}:{%endraw%}$SNAT_PORT server=$SERVER_IP{%raw%}:{%endraw%}$SERVER_PORT site=${%raw%}{Host}{%endraw%} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${%raw%}{User-agent}{%endraw%} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${%raw%}{Via}{%endraw%}"
+        commands: modify ltm profile request-log rlog_test_20_defauld_http response-log-template '$BIGIP_HOSTNAME {%raw%}cloud Response{%endraw%} client=$CLIENT_IP{%raw%}:{%endraw%}$CLIENT_PORT vip=$VIRTUAL_IP{%raw%}:{%endraw%}$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP{%raw%}:{%endraw%}$SNAT_PORT server=$SERVER_IP{%raw%}:{%endraw%}$SERVER_PORT site=${%raw%}{Host}{%endraw%} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${%raw%}{User-agent}{%endraw%} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${%raw%}{Via}{%endraw%}'
         retries: 100
         chdir: ptn_test_20
         provider:
