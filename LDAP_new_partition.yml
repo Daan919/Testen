@@ -9,7 +9,7 @@
 
     - name: Create group with delete protection enabled and custom attributes
       win_domain_group: 
-        name: "{{groupname}}"
+        name: "ptn_{{groupname}}"
         scope: global
         category: security
         organizational_unit: "OU=F5_partitions,OU=ManagedIQ,OU=Hosting,DC=tesis,DC=corp"
@@ -19,14 +19,14 @@
 
     - name: Add a domain group to a domain group
       win_domain_group_membership:
-        name: "{{groupname}}"
+        name: "ptn_{{groupname}}"
         members:
           - "{{MIQgroupe}}"
         state: present
 
     - name: Add a domain group to a domain group
       win_domain_group_membership:
-        name: "{{groupname}}"
+        name: "ptn_{{groupname}}"
         members:
           - "manage_iq_admins"
         state: present
