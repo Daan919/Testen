@@ -31,7 +31,7 @@
         url: https://192.168.201.251/mgmt/tm/ltm/profile/request-log/~ptn_test_34~rlog_test_34_defauld_http?
         method: POST
         body: "{{JSON}}"
-        force_basic_auth: yes
+       # force_basic_auth: yes
         status_code: 201
         body_format: json
 
