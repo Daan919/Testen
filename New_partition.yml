@@ -4,7 +4,7 @@
  # connection: local
   gather_facts: no
   connection: httpapi
-  network_os: eos
+  ansible_network_os: eos
 
   tasks:
     # - set_fact:
