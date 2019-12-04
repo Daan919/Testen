@@ -1,7 +1,7 @@
 ---
 - name: Create new partition and logging profiles
   hosts: all
-  connection: local
+  #connection: local
   gather_facts: no
   
   tasks:
