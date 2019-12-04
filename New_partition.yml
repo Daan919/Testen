@@ -1,7 +1,7 @@
 ---
 - name: Create new partition and logging profiles
   hosts: all
-  #connection: local
+ # connection: local
   gather_facts: no
   
   tasks:
@@ -30,10 +30,11 @@
       uri:
         url: https://192.168.201.251/mgmt/tm/ltm/profile/request-log/~ptn_test_34~rlog_test_34_defauld_http?
         method: POST
+        body_format: json
         body: "{{JSON}}"
        # force_basic_auth: yes
         status_code: 201
-        body_format: json
+        
 
 
     # - name: Create partition
