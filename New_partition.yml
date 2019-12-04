@@ -2,9 +2,9 @@
 - name: Create new partition and logging profiles
   hosts: all
  # connection: local
-  gather_facts: no
+  gather_facts: yes
   connection: httpapi
-  ansible_network_os: eos
+  
 
   tasks:
     # - set_fact:
