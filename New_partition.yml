@@ -20,7 +20,7 @@
 
     - name: mod loggin request
       bigip_command: 
-        commands: modify ltm profile request-log rlog_test_34_defauld_http response-log-template [$BIGIP_HOSTNAME {%raw%}cloud Response {%endraw%} client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT]
+        commands: modify ltm profile request-log rlog_test_34_defauld_http response-log-template [$BIGIP_HOSTNAME {%raw%}"cloud Response" {%endraw%} client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT]
         chdir: ptn_test_34
         provider:
           server_port: 443
