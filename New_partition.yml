@@ -3,8 +3,7 @@
   hosts: all
  # connection: local
   gather_facts: no
-  use_ssl: no
-  
+
   tasks:
     # - set_fact:
     #     i: "{{partition}}"
@@ -35,6 +34,7 @@
         body: "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
+        validate_certs: no
         force_basic_auth: yes
         status_code: 201
         
