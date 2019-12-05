@@ -7,6 +7,10 @@
   
 
   tasks:
+    - eos_facts:
+        ansible_network_os: eos
+
+
     # - set_fact:
     #     i: "{{partition}}"
     #     ptn: "ptn_"
