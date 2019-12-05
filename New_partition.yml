@@ -1,8 +1,8 @@
 ---
 - name: Create new partition and logging profiles
   hosts: all
- # connection: local
-  connection: httpapi
+  connection: local
+ # connection: httpapi
   
 
   tasks:
