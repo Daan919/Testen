@@ -1,0 +1,21 @@
+---
+- name: set virtual server
+  hosts: all
+  connection: local
+
+  tasks: 
+  - name: Set virtual server
+    bigip_virtual_server:
+      partition: "{{partition}}"
+      name: "{{name_server}}"
+      destination: "{{ip}}" 
+      ip_protocol: "tcp"
+      port: "{{port}}" 
+      description: "{{description}}"
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
+
+   

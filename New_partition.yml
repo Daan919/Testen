@@ -1,5 +1,5 @@
 ---
-- name: Create new partition and logging profiles
+- name: Set request and response template 
   hosts: all
   connection: local
  # connection: httpapi
