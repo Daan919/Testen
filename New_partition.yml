@@ -6,11 +6,17 @@
   
 
   tasks:
+
     - set_fact:
-        JSON: '{ "responseLogTemplate": "$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}" , 
-                 "requestLogTemplate" : "$BIGIP_HOSTNAME cloud Request client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}"  }'
+      i: "{{partition}}"
+      ptn: "ptn_"
+      JSON: '{ "responseLogTemplate": "$BIGIP_HOSTNAME cloud Response client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}" , 
+               "requestLogTemplate" : "$BIGIP_HOSTNAME cloud Request client=$CLIENT_IP:$CLIENT_PORT vip=$VIRTUAL_IP:$VIRTUAL_PORT pool=$VIRTUAL_POOL_NAME snat=$SNAT_IP:$SNAT_PORT server=$SERVER_IP:$SERVER_PORT site=${Host} path=$HTTP_PATH request=$HTTP_REQUEST UserAgent=${User-agent} vs=$VIRTUAL_NAME status=$HTTP_STATUS time-taken=$RESPONSE_MSECS sc-bytes=$RESPONSE_SIZE via=${Via}"  }'
+   
     - set_fact:
         JSON: "{{ JSON | from_json }}"
+        k: "{{ptn}}{{i}}"
+        v: "rlog_{{i}}_defauld_http"
 
     
     - name: mod loggin request
@@ -25,6 +31,7 @@
         force_basic_auth: yes
         status_code: 201
         return_content: yes 
+      ignore_errors: yes
         
 
   
