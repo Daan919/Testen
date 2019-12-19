@@ -1,0 +1,130 @@
+---
+- name: Set request and response template 
+  hosts: all
+  connection: local  
+
+  tasks:
+    - set_fact:
+        src_address_id: "{{src_address.split(':')[0]}"
+        src_address_name: "{{src_address.split(':')[1]}}"
+        des_address_id: "{{des_address.split(':')[0]}}"
+        des_address_name: "{{des_address.split(':')[1]}}"
+
+    - set_fact:
+        jsom: '{
+                "rule": {
+                    "app-fw-policy": {},
+                    "rule-group-type": "CUSTOM",
+                    "utm-policy": {},
+                    "ips-policy": {},
+                    "rule-profile": {
+                        "profile-type": "USER_DEFINED",
+                        "user-defined-profile": {
+                            "id": 65856,
+                            "name": "All Logging Enabled",
+                            "domain-id": 1,
+                            "uri": "/api/juniper/sd/fwpolicy-management/policy-profiles/65856"
+                        },
+                        "custom-profile": {
+                            "web-redirect": false,
+                            "tcp-syn-check": false,
+                            "infranet-redirect": "NONE",
+                            "destination-address-translation": "NONE",
+                            "redirect": "NONE",
+                            "web-redirect-to-https": false,
+                            "authentication-type": "NONE",
+                            "service-offload": false,
+                            "tcp-seq-check": false,
+                            "window-scale-check": false,
+                            "push-to-jims": false
+                        }
+                    },
+                    "rule-order": 0,
+                    "ips-enabled": false,
+                    "policy-id": 65859,
+                    "destination-address": {
+                        "exclude-list": false,
+                        "addresses": {
+                            "address-reference": [
+                                {
+                                    "id": "{{des_address_id}}",
+                                    "uuid": "{{des_address_id}}",
+                                    "name": "{{des_address_name}}"
+                                }
+                            ]
+                        }
+                    },
+                    "version": 6,
+                    "rule-type": "RULE",
+                    "vpn-tunnel-refs": {},
+                    "disabled": false,
+                    "rulegroup-disabled": false,
+                    "hit-count-details": {},
+                    "edit-version": 2,
+                    "rule-group-id": "{{fw_group}}",
+                    "scheduler": {},
+                    "services": {
+                        "service-reference": [
+                            {
+                                "id": 164015,
+                                "is-group": false
+                            }
+                        ]
+                    },
+                    "action": "PERMIT",
+                    "threat-policy": {},
+                    "condition-actions": {},
+                    "custom-column-data": "",
+                    "sourceidentities": {},
+                    "destination-zone": {
+                        "zone": [
+                            {
+                                "zone-type": "ZONE",
+                                "resolved": false,
+                                "name": "{{des_zone}}",
+                                "variable-id": 0
+                            }
+                        ]
+                    },
+                    "name": "{{fw_name}}",
+                    "source-zone": {
+                        "zone": [
+                            {
+                                "zone-type": "ZONE",
+                                "resolved": false,
+                                "name": "{{src_zone}}",
+                                "variable-id": 0
+                            }
+                        ]
+                    },
+                    "ssl-forward-proxy-profile": {},
+                    "machine-identity": {},
+                    "dynamic-application-profile": {},
+                    "source-address": {
+                        "exclude-list": false,
+                        "addresses": {
+                            "address-reference": [
+                                {
+                                    "id": "{{src_address_id}}",
+                                    "uuid": "{{src_address_id}}",
+                                    "name": "{{src_address_name}}"
+                                }
+                            ]
+                        }
+                    }   
+                }
+            }'
+
+    - name: mod loggin request
+      uri:
+        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/65859/rules/
+        method: POST
+        body_format: JSON
+        body: "{{JSON}}"
+        password: "{{ADpassword}}"
+        user: "{{ADusername}}"
+        validate_certs: no
+        force_basic_auth: yes
+        status_code: 201
+        return_content: yes 
+      ignore_errors: yes
