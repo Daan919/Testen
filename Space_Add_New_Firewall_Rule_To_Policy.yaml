@@ -6,7 +6,7 @@
 
   tasks:
     - set_fact:
-        src_address_id: "{{src_address.split(',')[0]}"
+        src_address_id: "{{src_address.split(',')[0]}}"
         src_address_name: "{{src_address.split(',')[1]}}"
         des_address_id: "{{des_address.split(',')[0]}}"
         des_address_name: "{{des_address.split(',')[1]}}"
