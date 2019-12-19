@@ -12,7 +12,7 @@
         des_address_name: "{{des_address.split(',')[1]}}"
 
     - set_fact:
-        json: '{
+        JSON: '{
                 "rule": {
                     "app-fw-policy": {},
                     "rule-group-type": "CUSTOM",
