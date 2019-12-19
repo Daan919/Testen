@@ -12,7 +12,7 @@
         des_address_name: "{{des_address.split(',')[1]}}"
 
     - set_fact:
-        jsom: '{
+        json: '{
                 "rule": {
                     "app-fw-policy": {},
                     "rule-group-type": "CUSTOM",
@@ -120,7 +120,7 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/65859/rules/
         method: POST
-        body_format: JSON
+        body_format: json
         body: "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
