@@ -120,12 +120,11 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/65859/rules/
         method: POST
-        body_format: raw
+        body_format: json
         headers:
           "Content-Type": "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
           "Accept-Type": "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;q=0.02"
-        body: 
-          "Content": "{{JSON}}"
+        body: "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
