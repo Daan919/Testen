@@ -124,7 +124,8 @@
         headers:
           "Content-Type": "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
           "Accept-Type": "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;q=0.02"
-        body: "{{JSON}}"
+        body: 
+          "Content": "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
