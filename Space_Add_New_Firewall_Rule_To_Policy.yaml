@@ -131,6 +131,6 @@
         validate_certs: no
         force_basic_auth: yes
         headers:
-          - Conent-Type: "{{HEADER_Content_Type}}"
-          - Accept-Type: "{{HEADER_Accept_Type}}"
+          Conent-Type: "{{HEADER_Content_Type}}"
+          Accept-Type: "{{HEADER_Accept_Type}}"
       ignore_errors: yes
