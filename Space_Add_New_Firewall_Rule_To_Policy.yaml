@@ -13,6 +13,7 @@
     - set_fact:
         src_address_id: "{{ src_address_id | int }}"
         des_address_id: "{{ des_address_id | int }}"
+        fw_group_int: "{{ fw_group | int }}"
 
     - set_fact:    
         JSON: '{
@@ -65,7 +66,7 @@
                     "rulegroup-disabled": false,
                     "hit-count-details": {},
                     "edit-version": 2,
-                    "rule-group-id": "{{fw_group}}",
+                    "rule-group-id": {{fw_group_int}},
                     "scheduler": {},
                     "services": {
                         "service-reference": [
