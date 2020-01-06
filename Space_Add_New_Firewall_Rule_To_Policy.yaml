@@ -125,6 +125,7 @@
         HEADER_Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
         HEADER_Accept_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;q=0.02"
 
+    - debug: var=JSON        
     - copy: content="{{JSON}}" dest=/tmp/frule_tmp.json    
 
     - name: mod loggin request
