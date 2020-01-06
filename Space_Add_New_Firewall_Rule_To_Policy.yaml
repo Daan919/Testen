@@ -130,7 +130,6 @@
         user: "{{ADusername}}"
         validate_certs: no
         force_basic_auth: yes
-        return_content: yes 
         headers:
           Conent-Type: "{{HEADER_Content_Type}}"
           Accept-Type: "{{HEADER_Accept_Type}}"
