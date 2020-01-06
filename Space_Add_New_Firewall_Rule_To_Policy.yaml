@@ -126,13 +126,13 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/983122/rules
         method: POST
-        body_format: json
+        # body_format: json
         body: "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
         force_basic_auth: yes
-        # headers:
-        #   Content-Type: "{{HEADER_Content_Type}}"
-        #   Accept-Type: "{{HEADER_Accept_Type}}"
+        headers:
+          Content-Type: "{{HEADER_Content_Type}}"
+          Accept-Type: "{{HEADER_Accept_Type}}"
       ignore_errors: yes 
