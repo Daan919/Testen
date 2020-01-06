@@ -117,15 +117,14 @@
 
     - set_fact:
         JSON: "{{JSON | to_json}}"
+        HEADER_Content_Type: application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;charset=UTF-8"
+        HEADER_Accept-Type: application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;q=0.02
 
     - name: mod loggin request
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/983122/rules/
         method: POST
         body_format: json
-        headers:
-          content_type: "application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;charset=UTF-8"
-          accept-type: "application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;q=0.02"
         body: "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
