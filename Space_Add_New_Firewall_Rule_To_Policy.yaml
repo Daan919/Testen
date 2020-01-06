@@ -131,4 +131,7 @@
         validate_certs: no
         force_basic_auth: yes
         return_content: yes 
+        headers:
+          Conent_type: "{{HEADER_Content_Type}}"
+          Accept_type: "{{HEADER_Accept_Type}}"
       ignore_errors: yes
