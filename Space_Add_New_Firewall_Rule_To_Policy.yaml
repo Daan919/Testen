@@ -124,9 +124,8 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/983122/rules
         method: POST
-        body_format: raw
-        body:
-            - "{{JSON}}"
+        body_format: json
+        body: "{{JSON}}"
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
