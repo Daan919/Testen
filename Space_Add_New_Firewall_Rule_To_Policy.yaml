@@ -51,8 +51,8 @@
                         "addresses": {
                             "address-reference": [
                                 {
-                                    "id": "{{des_address_id}}",
-                                    "uuid": "{{des_address_id}}",
+                                    "id": {{des_address_id}},
+                                    "uuid": {{des_address_id}},
                                     "name": "{{des_address_name}}"
                                 }
                             ]
@@ -109,8 +109,8 @@
                         "addresses": {
                             "address-reference": [
                                 {
-                                    "id": "{{src_address_id}}",
-                                    "uuid": "{{src_address_id}}",
+                                    "id": {{src_address_id}},
+                                    "uuid": {{src_address_id}},
                                     "name": "{{src_address_name}}"
                                 }
                             ]
