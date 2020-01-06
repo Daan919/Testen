@@ -118,7 +118,7 @@
     - set_fact:
         JSON: "{{JSON | to_json}}"
         HEADER_Content_Type: application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;charset=UTF-8
-        HEADER_Accept-Type: application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;q=0.02
+        HEADER_Accept_Type: application/vnd.juniper.sd.policy-management.firewall.policy+json;version=2;q=0.02
 
     - name: mod loggin request
       uri:
