@@ -137,7 +137,7 @@
 
     - debug: var=frule        
     - copy: content="{{frule}}" dest=/tmp/frule_tmp 
-    - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp    
+       
 
     - name: API call junos space add new rule
       uri:
@@ -152,6 +152,7 @@
         headers:
           Content-Type: "{{HEADER_Content_Type}}"
   
+    - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp 
 
     - name: API call junos space publis policy 
       uri:
