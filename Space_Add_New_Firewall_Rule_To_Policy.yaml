@@ -16,7 +16,7 @@
         fw_group_int: "{{ fw_group | int }}"
 
     - set_fact:    
-        rule:   '{
+        JSON: '{ "rule": {
                     "app-fw-policy": {},
                     "rule-group-type": "CUSTOM",
                     "utm-policy": {},
@@ -116,15 +116,16 @@
                             ]
                         }
                     }   
-                }'
+                }
+            }'
 
     - set_fact:
-        JSON: "{{rule | to_json}}"
+        JSON: "{{JSON | to_json}}"
         HEADER_Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
         HEADER_Accept_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;q=0.02"
 
-    - debug: var=rule        
-    - copy: content="{{rule}}" dest=/tmp/frule_tmp.json    
+    - debug: var=JSON        
+    - copy: content="{{JSON}}" dest=/tmp/frule_tmp.json    
 
     - name: mod loggin request
       uri:
