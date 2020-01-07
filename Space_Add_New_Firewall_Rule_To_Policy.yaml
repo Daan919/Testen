@@ -11,9 +11,9 @@
         des_address_id:     "{{des_address.split(',')[0]}}"
         des_address_name:   "{{des_address.split(',')[1]}}"
     - set_fact:
-        src_address_id: "{{ src_address_id | int }}"
-        des_address_id: "{{ des_address_id | int }}"
-        fw_group_int: "{{ fw_group | int }}"
+        src_address_id:     "{{ src_address_id | int }}"
+        des_address_id:     "{{ des_address_id | int }}"
+        fw_group_int:       "{{ fw_group | int }}"
 
     - set_fact:    
         frule: '{ "rule": {
@@ -117,6 +117,7 @@
                     }   
                 }
             }'
+
         update: '{  
                     "publish" : 
                     {    
