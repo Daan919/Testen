@@ -150,7 +150,7 @@
         use_proxy: no
         headers:
           Content-Type: "{{HEADER_Content_Type}}"
-      ignore_errors: yes 
+  
 
     - name: API call junos space publis policy 
       uri:
@@ -164,4 +164,3 @@
         use_proxy: no
         headers:
           Content-Type: "{{HEADER_Content_Type_update}}"
-      ignore_errors: yes 
