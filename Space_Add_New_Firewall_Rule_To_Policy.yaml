@@ -119,8 +119,7 @@
             }'
 
         update: '{ "publish": {   
-                    "policy-ids": 
-                    {      
+                    "policy-ids": {      
                         "policy-id":  ["983122"]
                         },
                     "delete-oldest-snapshot": "false"  
