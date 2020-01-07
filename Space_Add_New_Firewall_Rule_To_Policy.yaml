@@ -167,3 +167,4 @@
         headers:
           Content-Type: "{{Content_Type_update}}"
           Connection: "keep-alive"
+          Accept: "*/*"
