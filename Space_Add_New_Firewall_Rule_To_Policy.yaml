@@ -25,9 +25,7 @@
                         "profile-type": "USER_DEFINED",
                         "user-defined-profile": {
                             "id": 65856,
-                            "name": "All Logging Enabled",
-                            "domain-id": 1,
-                            "uri": "/api/juniper/sd/fwpolicy-management/policy-profiles/65856"
+                            "name": "All Logging Enabled"
                         },
                         "custom-profile": {
                             "web-redirect": false,
@@ -79,6 +77,7 @@
                     "threat-policy": {},
                     "condition-actions": {},
                     "custom-column-data": "",
+                    "description": "",
                     "sourceidentities": {},
                     "destination-zone": {
                         "zone": [
