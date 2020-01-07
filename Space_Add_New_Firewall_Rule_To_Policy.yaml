@@ -119,15 +119,15 @@
             }'
 
         update: '{  
-        "publish" : 
-            {   
-            "policy-ids" : 
-               {      
-                    "policy-id" :  "983122"
-                    },
-                "delete-oldest-snapshot" : "false"  
-                }
-            }'
+            "publish" : 
+                {   
+                "policy-ids" : 
+                {      
+                        "policy-id" :  "983122"
+                        },
+                    "delete-oldest-snapshot" : "false"  
+                    }
+                }'
 
     - set_fact:
         frule: "{{frule | to_json}}"
@@ -153,7 +153,9 @@
           Content-Type: "{{HEADER_Content_Type}}"
   
     - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp 
-
+    - pause: 
+        seconds: 10
+        
     - name: API call junos space publis policy 
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
