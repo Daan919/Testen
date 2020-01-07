@@ -120,7 +120,7 @@
 
         update: '{ "publish": {   
                     "policy-ids": {      
-                        "policy-id": "983122"
+                        "policy-id": ["983122"]
                         },
                     "delete-oldest-snapshot": "false"  
                     }
@@ -166,3 +166,4 @@
         use_proxy: no
         headers:
           Content-Type: "{{Content_Type_update}}"
+          Connection: "keep-alive"
