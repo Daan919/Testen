@@ -117,20 +117,31 @@
                     }   
                 }
             }'
+        update: '{  
+                    "publish" : 
+                    {    
+                        "policy-ids" : 
+                        {      
+                            "policy-id" :  "983122"
+                        },
+                    "delete-oldest-snapshot" : "false"  
+                    }
+                }'
 
     - set_fact:
-        JSON: "{{JSON | to_json}}"
+        frule: "{{JSON | to_json}}"
+        pupdate: "{{update | to_json}}"
         HEADER_Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
-        HEADER_Accept_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;q=0.02"
+        HEADER_Content_Type_update: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
     - debug: var=JSON        
-    - copy: content="{{JSON}}" dest=/tmp/frule_tmp    
+    - copy: content="{{JSON}}" dest=/tmp/frule_tmp 
+    - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp    
 
-    - name: mod loggin request
+    - name: API call junos space add new rule
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/983122/rules
         method: POST
-        # body_format: json
         src: /tmp/frule_tmp
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
@@ -139,4 +150,18 @@
         use_proxy: no
         headers:
           Content-Type: "{{HEADER_Content_Type}}"
+      ignore_errors: yes 
+
+    - name: API call junos space publis policy 
+      uri:
+        url: https://192.168.201.31api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
+        method: POST
+        src: /tmp/pupdate_tmp
+        password: "{{ADpassword}}"
+        user: "{{ADusername}}"
+        validate_certs: no
+        force_basic_auth: yes
+        use_proxy: no
+        headers:
+          Content-Type: "{{HEADER_Content_Type_update}}"
       ignore_errors: yes 
