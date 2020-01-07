@@ -118,13 +118,7 @@
                 }
             }'
 
-        update: '{ "publish": {   
-                        "policy-ids": {      
-                            "policy-id": ["983122"]
-                            },
-                        "delete-oldest-snapshot": "false"  
-                        }
-                    }'
+        update: '{"publish":{"policy-ids":{"policy-id":["983122"]},"delete-oldest-snapshot":"false"}}'
 
     - set_fact:
         frule: "{{frule | to_json}}"
@@ -149,7 +143,7 @@
         headers:
           Content-Type: "{{HEADER_Content_Type}}"
   
-    - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp 
+    - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp.json
     - debug: var=pupdate
 
     - pause: 
@@ -159,7 +153,7 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
         method: POST
-        src: /tmp/pupdate_tmp
+        src: /tmp/pupdate_tmp.json
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
