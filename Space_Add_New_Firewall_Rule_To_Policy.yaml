@@ -150,6 +150,7 @@
           Content-Type: "{{HEADER_Content_Type}}"
   
     - copy: content="{{pupdate}}" dest=/tmp/pupdate_tmp 
+    - debug: var=pupdate
 
     - pause: 
         seconds: 10
