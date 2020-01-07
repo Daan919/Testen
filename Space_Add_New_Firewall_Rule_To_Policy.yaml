@@ -139,5 +139,4 @@
         use_proxy: no
         headers:
           Content-Type: "{{HEADER_Content_Type}}"
-          Accept-Type: "{{HEADER_Accept_Type}}"
       ignore_errors: yes 
