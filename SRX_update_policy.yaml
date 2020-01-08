@@ -36,6 +36,5 @@
         validate_certs: no
         force_basic_auth: yes
         use_proxy: no
-        headers:
-          Content-type: "{{Content_Type_U}}"
+        HEADER_Content-Type: "{{Content_Type_U}}"
           
