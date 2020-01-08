@@ -14,6 +14,7 @@
         src_address_id:     "{{ src_address_id | int }}"
         des_address_id:     "{{ des_address_id | int }}"
         fw_group_int:       "{{ fw_group | int }}"
+        update: '{"publish":{"policy-ids":{"policy-id": 983122},"delete-oldest-snapshot":"false"}}'
 
     - set_fact:    
         frule: '{ "rule": {
@@ -117,11 +118,10 @@
                     }   
                 }
             }'
-        update: '{"publish":{"policy-ids":{"policy-id": 983122},"delete-oldest-snapshot":"false"}}'
+        update: "{{update | to_json}}"
 
     - set_fact:
         frule: "{{frule | to_json}}"
-        update: "{{update | to_json}}"
         HEADER_Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
         Content_Type_update: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
@@ -142,8 +142,9 @@
         headers:
           Content-Type: "{{HEADER_Content_Type}}"
   
-    - copy: content="{{update}}" dest=/tmp/update_tmp
     - debug: var=update
+    - copy: content="{{update}}" dest=/tmp/update_tmp
+    
 
     - pause: 
         seconds: 10
