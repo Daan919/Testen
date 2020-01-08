@@ -6,7 +6,7 @@
 
   tasks:
     - set_fact:
-        update:   '{ "publish" : {
+        update: '{ "publish" : {
                       "policy-ids" : {
                         "policy-id" : "983122"
                         },
