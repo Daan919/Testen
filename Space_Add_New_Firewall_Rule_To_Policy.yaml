@@ -122,8 +122,7 @@
 
     - set_fact:
         frule: "{{frule | to_json}}"
-        HEADER_Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
-        Content_Type_update: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
+        Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
 
     - debug: var=frule        
     - copy: content="{{frule}}" dest=/tmp/frule_tmp 
@@ -140,5 +139,5 @@
         force_basic_auth: yes
         use_proxy: no
         headers:
-          Content-Type: "{{HEADER_Content_Type}}"
+          Content-Type: "{{Content_Type}}"
 
