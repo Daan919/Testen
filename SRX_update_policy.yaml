@@ -15,9 +15,9 @@
                    }'
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
+    - debug: var=update
     - set_fact:
         update: "{{update | to_json}}"
-    - debug: var=update
     - copy: content="{{update}}" dest=/tmp/update_tmp
 
     - name: API call junos space publis policy 
