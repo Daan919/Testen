@@ -13,12 +13,13 @@
                       "delete-oldest-snapshot" : "false"  
                      }
                    }'
-        Content_Type: 'application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8'
+        
         # Accept_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
 
     - debug: var=update
     - set_fact:
         update: "{{update | to_json}}"
+        Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
     - copy: content="{{update}}" dest=/tmp/update_tmp
 
     - name: API call junos space publis policy 
