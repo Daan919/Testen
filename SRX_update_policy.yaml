@@ -19,8 +19,8 @@
     - debug: var=update
     - set_fact:
         update: "{{update | to_json}}"
-        Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
-        
+        Content_Type_U: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
+
     - copy: content="{{update}}" dest=/tmp/update_tmp
 
     - name: API call junos space publis policy 
@@ -34,5 +34,5 @@
         force_basic_auth: yes
         use_proxy: no
         headers:
-          Content-Type: "{{Content_Type}}"
+          Content-Type: "{{Content_Type_U}}"
           
