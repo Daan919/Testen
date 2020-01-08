@@ -21,7 +21,7 @@
 
     - name: API call junos space publis policy 
       uri:
-        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=trueS
+        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
         method: POST
         src: /tmp/pupdate_tmp.json
         password: "{{ADpassword}}"
