@@ -6,7 +6,7 @@
 
   tasks:
     - set_fact:
-        update: '{"publish": {"policy-ids": {"policy-id": 983122},"delete-oldest-snapshot": "false"}}'
+        update: '{"publish": {"policy-ids": {"policy-id": ["983122"]},"delete-oldest-snapshot": "false"}}'
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
     - set_fact:
