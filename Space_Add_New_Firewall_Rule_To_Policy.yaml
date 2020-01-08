@@ -117,7 +117,6 @@
                     }   
                 }
             }'
-
         update: '{"publish":{"policy-ids":{"policy-id": 983122},"delete-oldest-snapshot":"false"}}'
 
     - set_fact:
