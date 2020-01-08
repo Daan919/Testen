@@ -32,5 +32,5 @@
         force_basic_auth: yes
         use_proxy: no
         headers:
-          Content-Type:  "{{Content_Type}}"
-          # Accept-Type: "{{Accept_Type}}"
+          Content-Type: "{{Content_Type}}"
+          
