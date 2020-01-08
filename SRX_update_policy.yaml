@@ -1,0 +1,26 @@
+---
+- name: Update and publish SRX policy  
+  hosts: all
+  connection: local  
+  gather_facts: no
+
+  tasks:
+    - set_fact:
+        update: '{"publish":{"policy-ids":{"policy-id": 983122},"delete-oldest-snapshot":"false"}}'
+    - set_fact:
+        update: "{{update | to_json}}"
+    - debug: var=update
+    - copy: content="{{update}}" dest=/tmp/update_tmp
+
+    - name: API call junos space publis policy 
+      uri:
+        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=trueS
+        method: POST
+        src: /tmp/pupdate_tmp.json
+        password: "{{ADpassword}}"
+        user: "{{ADusername}}"
+        validate_certs: no
+        force_basic_auth: yes
+        use_proxy: no
+        headers:
+          Content-Type: "{{Content_Type_update}}"
