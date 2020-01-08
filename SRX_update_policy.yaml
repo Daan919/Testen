@@ -36,5 +36,7 @@
         validate_certs: no
         force_basic_auth: yes
         use_proxy: no
-        HEADER_Content-Type: "{{Content_Type_U}}"
+        headers:
+          Content-type: "{{Content_Type_U}}"
+          Accept-Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
           
