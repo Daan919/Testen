@@ -14,6 +14,7 @@
                      }
                    }'
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
+        Accept-Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
 
     - debug: var=update
     - set_fact:
@@ -32,3 +33,4 @@
         use_proxy: no
         headers:
           Content-Type: "{{Content_Type}}"
+          Accept-Type: "{{Accept-Type}}"
