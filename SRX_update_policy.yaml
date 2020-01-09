@@ -6,13 +6,14 @@
 
   tasks:
     - set_fact:
-        update: '{ "publish": {
-                      "policy-ids": {
-                        "policy-id": "983122"
-                        },
-                      "delete-oldest-snapshot": "false"  
-                     }
-                   }'
+        update: '{
+    "publish": {
+        "delete-oldest-snapshot": "false",
+        "policy-ids": {
+            "policy-id": "983122"
+        }
+    }
+}'
         
         # Accept_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
 
