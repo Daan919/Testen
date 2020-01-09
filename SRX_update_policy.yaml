@@ -39,5 +39,5 @@
         use_proxy: no
         headers:
           Content-type: "{{Content_Type_U}}"
-          Accept-Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
+          # Accept-Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
           
