@@ -37,4 +37,4 @@
         use_proxy: no
 
     - pause:
-        minutes: 5
+        minutes: 3
