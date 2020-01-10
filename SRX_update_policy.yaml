@@ -8,7 +8,7 @@
     - set_fact:
         req: '{
     "publish": {
-        "delete-oldest-snapshot": "false",
+        "delete-oldest-snapshot": "true",
         "policy-ids": {
             "policy-id": ["983122"]
         }
