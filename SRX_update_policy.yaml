@@ -6,26 +6,26 @@
 
   tasks:
     - set_fact:
-         reg: '{
-    "publish": {
-        "delete-oldest-snapshot": "false",
-        "policy-ids": {
-            "policy-id": "983122"
-        }
-    }
-}'
+         reg101:   '{
+                  "publish": {
+                    "delete-oldest-snapshot": "false",
+                    "policy-ids": {
+                        "policy-id": "983122"
+                    }
+                }
+            }'
      
-    - debug: var=req
+    - debug: var=req101
 
     - set_fact:
-        req: "{{ req | to_json }}"
+        req: "{{ req101 | to_json }}"
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
     - copy: content="{{req}}" dest=/tmp/req101.json
 
     - name: API call junos space publis policy 
       uri:
-        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
+        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=false
         method: POST
         return_content: yes
         headers:
