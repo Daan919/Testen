@@ -6,7 +6,7 @@
 
   tasks:
     - set_fact:
-         reg101:   '{
+         req101:   '{
                   "publish": {
                     "delete-oldest-snapshot": "false",
                     "policy-ids": {
