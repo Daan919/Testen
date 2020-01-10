@@ -36,4 +36,5 @@
         force_basic_auth: yes
         use_proxy: no
 
-          
+    - pause:
+        minutes: 5
