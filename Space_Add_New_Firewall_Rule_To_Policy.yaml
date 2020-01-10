@@ -121,7 +121,7 @@
   
 
     - set_fact:
-        # frule: "{{frule | to_json}}"
+        frule: "{{frule | to_json}}"
         Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
 
     - debug: var=frule        
