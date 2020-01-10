@@ -21,7 +21,7 @@
         req: "{{ req101 | to_json }}"
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
-    - copy: content="{{req}}" dest=/tmp/req101.json
+    - copy: content="{{req101}}" dest=/tmp/req101.json
 
     - name: API call junos space publis policy 
       uri:
