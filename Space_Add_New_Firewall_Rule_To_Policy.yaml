@@ -42,7 +42,7 @@
                             "push-to-jims": false
                         }
                     },
-                    "rule-order": 6,
+                    "rule-order": 5,
                     "ips-enabled": false,
                     "policy-id": 983122,
                     "destination-address": {
@@ -121,18 +121,18 @@
   
 
     - set_fact:
-        frule: "{{frule | to_json}}"
+    #  frule: "{{frule | to_json}}"
         Content_Type: "application/vnd.juniper.sd.policy-management.firewall.rule+json;version=2;charset=UTF-8"
 
     - debug: var=frule        
-    - copy: content="{{frule}}" dest=/tmp/frule_tmp 
+    - copy: content="{{frule}}" dest=/tmp/frule_tmp.json
        
 
     - name: API call junos space add new rule
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/policies/983122/rules
         method: POST
-        src: /tmp/frule_tmp
+        src: /tmp/frule_tmp.json
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
