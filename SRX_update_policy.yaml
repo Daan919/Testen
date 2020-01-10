@@ -18,7 +18,7 @@
     - debug: var=req101
 
     - set_fact:
-        req: "{{ req101 | form_json }}"
+        # req: "{{ req101 | from_json }}"
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
     - copy: content="{{req101}}" dest=/tmp/req101.json
