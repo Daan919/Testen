@@ -29,11 +29,13 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
         method: POST
+        return_content: yes
         src: /tmp/req101.json
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
         force_basic_auth: yes
+        
         use_proxy: no
         headers:
           Content-Type: "{{Content_Type}}"
