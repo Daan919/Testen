@@ -20,12 +20,10 @@
     - debug: var=update
     - set_fact:
         update: "{{ update | to_json }}"
-        Content_Type: application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8
+        Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
     - copy: content="{{update}}" dest=/tmp/update_tmp
 
-    - pause:
-        seconds: 10 
 
     - name: API call junos space publis policy 
       uri:
