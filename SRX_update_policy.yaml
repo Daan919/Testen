@@ -22,14 +22,14 @@
         req: "{{ req | to_json }}"
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
-    - copy: content="{{req}}" dest=/tmp/req
+    - copy: content="{{req}}" dest=/tmp/req101
 
 
     - name: API call junos space publis policy 
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
         method: POST
-        src: /tmp/req
+        src: /tmp/req101
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
