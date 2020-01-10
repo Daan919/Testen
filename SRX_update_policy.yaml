@@ -6,24 +6,22 @@
 
   tasks:
     - set_fact:
-        req: '{
+         reg: '{
     "publish": {
-        "delete-oldest-snapshot": "true",
+        "delete-oldest-snapshot": "false",
         "policy-ids": {
             "policy-id": "983122"
         }
     }
 }'
-        
-        # Accept_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
-
+     
     - debug: var=req
+
     - set_fact:
         req: "{{ req | to_json }}"
         Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
 
     - copy: content="{{req}}" dest=/tmp/req101.json
-
 
     - name: API call junos space publis policy 
       uri:
