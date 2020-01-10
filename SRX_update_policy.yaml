@@ -10,7 +10,7 @@
     "publish": {
         "delete-oldest-snapshot": "true",
         "policy-ids": {
-            "policy-id": ["983122"]
+            "policy-id": "983122"
         }
     }
 }'
