@@ -20,7 +20,7 @@
     - debug: var=update
     - set_fact:
         update: "{{ update | to_json }}"
-        Content_Type_U: application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8
+        Content_Type: application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8
 
     - copy: content="{{update}}" dest=/tmp/update_tmp
 
@@ -29,7 +29,7 @@
 
     - name: API call junos space publis policy 
       uri:
-        url: "https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true"
+        url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
         method: POST
         src: /tmp/update_tmp
         password: "{{ADpassword}}"
@@ -38,6 +38,5 @@
         force_basic_auth: yes
         use_proxy: no
         headers:
-          Content-type: "{{Content_Type_U}}"
-          # Accept-Type: "application/vnd.juniper.sd.fwpolicy-provisioning.monitorable-task-instances+json;version=1;q=0.01"
+          Content-Type: "{{Content_Type}}"
           
