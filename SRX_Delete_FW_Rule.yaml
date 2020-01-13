@@ -14,6 +14,7 @@
         method: DELETE
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
+        status_code: 204
         validate_certs: no
         force_basic_auth: yes
         use_proxy: no
