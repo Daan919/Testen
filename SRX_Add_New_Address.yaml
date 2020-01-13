@@ -6,11 +6,11 @@
 
   tasks:
     - set_fact:
-         req101:   '{  "address" : {    
-                          "name": "102_test",
-                          "address-type": "IPADDRESS",
-                          "ip-address": "192.168.201.12",
-                          "description": "test",
+         req102:   '{  "address" : {    
+                          "name": "{{name_addres}}",
+                          "address-type": "{{address_type}}",
+                          "ip-address": "{{address}}",
+                          "description": "",
                           "host-name": "",
                           "definition-type": "CUSTOM",
                           "domain-id": 2,
