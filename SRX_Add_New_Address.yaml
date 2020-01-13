@@ -6,6 +6,7 @@
 
   tasks:
     - set_fact:
+         Content_Type: "application/vnd.juniper.sd.address-management.address+json;version=1;charset=UTF-8"
          req102:   '{  "address" : {    
                           "name": "{{name_addres}}",
                           "address-type": "{{address_type}}",
@@ -19,9 +20,6 @@
                       }'
      
     - debug: var=req102
-
-    - set_fact:
-        Content_Type: "application/vnd.juniper.sd.address-management.address+json;version=1;charset=UTF-8"
 
     - copy: content="{{req102}}" dest=/tmp/req102.json
 
