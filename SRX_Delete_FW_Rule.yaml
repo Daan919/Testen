@@ -11,7 +11,7 @@
     - name: API call junos space delete firewall rule 
       uri:
         url: "{{url}}"
-        method: POST
+        method: DELETE
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
