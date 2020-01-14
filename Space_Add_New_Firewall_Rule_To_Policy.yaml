@@ -44,7 +44,7 @@
                             "push-to-jims": false
                         }
                     },
-                    "rule-order": 5,
+                    
                     "ips-enabled": false,
                     "policy-id": 983122,
                     "destination-address": {
