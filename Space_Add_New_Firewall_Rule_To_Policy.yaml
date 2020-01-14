@@ -11,7 +11,7 @@
         des_address_id:     "{{des_address.split(',')[0]}}"
         des_address_name:   "{{des_address.split(',')[1]}}"
         service_id:         "{{service.split(',')[0]}}"
-        service_name:       "{{service.split(',')[1]}}"
+        service_is_group:   "{{service.split(',')[1]}}"
     - set_fact:
         src_address_id:     "{{ src_address_id | int }}"
         des_address_id:     "{{ des_address_id | int }}"
@@ -72,7 +72,7 @@
                         "service-reference": [
                             {
                                 "id": {{service_id}},
-                                "is-group": false
+                                "is-group": {{service_is_group}}
                             }
                         ]
                     },
