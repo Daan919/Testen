@@ -72,7 +72,7 @@
                         "service-reference": [
                             {
                                 "id": {{service_id}},
-                                "is-group": {{service_is_group}}
+                                "is-group": "{{service_is_group}}"
                             }
                         ]
                     },
