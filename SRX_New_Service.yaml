@@ -29,7 +29,7 @@
     - debug: var=req105
 
     - set_fact:
-        Content_Type: "application/vnd.juniper.sd.fwpolicy-provisioning.publish+json;version=1;charset=UTF-8"
+        Content_Type: "application/vnd.juniper.sd.service-management.service+json;version=1;charset=UTF-8"
 
     - copy: content="{{req105}}" dest=/tmp/req105.json
 
@@ -37,8 +37,9 @@
       uri:
         url: https://192.168.201.31/api/juniper/sd/policy-management/firewall/provisioning/publish-policy?update=true
         method: POST
+        header:
+          Content-Type: "{{Content_Type}}"
         return_content: yes
-        headers:
         src: /tmp/req105.json
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
