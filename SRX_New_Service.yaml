@@ -37,7 +37,7 @@
         header:
           Content-Type: "application/vnd.juniper.sd.service-management.service+json;version=1;charset=UTF-8"
         return_content: yes
-        src: /tmp/req105.json
+        src: /tmp/req20.json
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
         validate_certs: no
