@@ -13,7 +13,7 @@
                                   "msrpc-protocol-type":  "{{protecol}}",    
                                   "protocol-number": 6,
                                   "name": "{{name_service}}",            
-                                  "dst-port": {{port_number}},
+                                  "dst-port": "{{port_number}}",
                                   "disable-timeout": "false",
                                   "inactivity-timeout": "300",        
                                   "protocol-type":  "PROTOCOL_{{protecol}}"        
