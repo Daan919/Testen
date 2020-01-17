@@ -35,7 +35,7 @@
         url: https://192.168.201.31/api/juniper/sd/service-management/services
         method: POST
         header:
-          Content-Type: "application/vnd.juniper.sd.service-management.service+json;version=1;charset=UTF-8"
+          Content-Type: 'application/vnd.juniper.sd.service-management.service+json;version=1;charset=UTF-8'
         return_content: yes
         src: /tmp/req20.json
         password: "{{ADpassword}}"
