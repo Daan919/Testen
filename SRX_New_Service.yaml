@@ -6,7 +6,7 @@
 
   tasks:
     - set_fact:
-         req105: '{  "service": {    
+         req20: '{  "service": {    
                         "protocols": {      
                           "protocol":  {        
                              "sunrpc-protocol-type":  "{{protecol}}" ,        
@@ -28,7 +28,7 @@
      
     - debug: var=req105
 
-    - copy: content="{{req105}}" dest=/tmp/req105.json
+    - copy: content="{{req20}}" dest=/tmp/req20.json
 
     - name: New Service
       uri:
@@ -36,7 +36,6 @@
         method: POST
         header:
           Content-Type: "application/vnd.juniper.sd.service-management.service+json;version=1;charset=UTF-8"
-          Accept-Type: "application/vnd.juniper.sd.service-management.service+json;version=1;q=0.0"
         return_content: yes
         src: /tmp/req105.json
         password: "{{ADpassword}}"
