@@ -39,7 +39,6 @@
         method: POST
         return_content: yes
         headers:
-          Content-Type: "{{Content_Type}}"
         src: /tmp/req105.json
         password: "{{ADpassword}}"
         user: "{{ADusername}}"
