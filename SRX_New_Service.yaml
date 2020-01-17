@@ -6,25 +6,25 @@
 
   tasks:
     - set_fact:
-         req105:   '{  "service" : {    
-                          "protocols" : {      
-                              "protocol" : [ {        
-                                  "sunrpc-protocol-type" :  "{{protecol}}" ,        
-                                  "msrpc-protocol-type" :  "{{protecol}}",    
+         req105:   '{  "service": {    
+                          "protocols": {      
+                              "protocol": [ {        
+                                  "sunrpc-protocol-type":  "{{protecol}}" ,        
+                                  "msrpc-protocol-type":  "{{protecol}}",    
                                   "protocol-number": 6,
                                   "name": "{{name_service}}",            
-                                  "dst-port" : {{port_number}},
-                                  "disable-timeout" : false,
-                                  "inactivity-timeout" : "300",        
-                                  "protocol-type" :  "PROTOCOL_{{protecol}}"        
+                                  "dst-port": {{port_number}},
+                                  "disable-timeout": false,
+                                  "inactivity-timeout": "300",        
+                                  "protocol-type":  "PROTOCOL_{{protecol}}"        
                                   } ]    
                               },        
-                              "name" : "{{name_service}}",
-                              "is-group" : false,
-                              "description" : "toegevoegd via ManageIQ",    
-                              "members" : { }
-                          }
-                      }'
+                              "name": "{{name_service}}",
+                              "is-group": false,
+                              "description": "toegevoegd via ManageIQ",    
+                              "members": {}
+                        }
+                    }'
      
     - debug: var=req105
 
