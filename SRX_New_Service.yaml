@@ -11,7 +11,7 @@
                           "protocol":  {        
                              "sunrpc-protocol-type":  "{{protecol}}" ,        
                                 "msrpc-protocol-type":  "{{protecol}}",    
-                                "protocol-number": 6,
+                                "protocol-number": "6",
                                 "name": "{{name_service}}",            
                                 "dst-port": "{{port_number}}",
                                 "disable-timeout": "false",
