@@ -26,7 +26,7 @@
                          } 
                     }'
      
-    - debug: var=req105
+    - debug: var=req20
 
     - copy: content="{{req20}}" dest=/tmp/req20.json
 
