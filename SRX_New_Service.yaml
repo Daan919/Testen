@@ -2,7 +2,7 @@
 - name: Update and publish SRX policy  
   hosts: all
   connection: local  
-  gather_facts: yes
+  gather_facts: no
 
   tasks:
     - set_fact:
