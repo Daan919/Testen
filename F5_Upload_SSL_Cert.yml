@@ -19,3 +19,7 @@
         server: 192.168.201.251
         validate_certs: no
     delegate_to: localhost
+  - name: Remove file (delete file)
+    file:
+      path: "{{cert}}"
+      state: absent
