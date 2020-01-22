@@ -11,6 +11,7 @@
       name: "{{name_ssl}}"
       state: present
       content: "{{lookup('file', {{name_ssl}}) }}"
+      partition: "{{partition}}"
       provider:
         server_port: 443
         server: 192.168.201.251
