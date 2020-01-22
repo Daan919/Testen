@@ -9,9 +9,9 @@
 
   - name: Import PEM Certificate
     bigip_ssl_certificate:
-      name: tls-ca-bundle.pem
+      name: email-ca-bundle.pem
       state: present
-      content: "{{lookup('file', '/lib_core/tls-ca-bundle.pem') }}"
+      content: "{{lookup('file', '/lib_core/email-ca-bundle.pem') }}"
       provider:
         server_port: 443
         server: 192.168.201.251
