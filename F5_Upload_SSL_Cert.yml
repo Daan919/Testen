@@ -7,7 +7,7 @@
   tasks: 
   - name: Import PEM Certificate
     bigip_ssl_certificate:
-      name: certificate-name_test
+      name: cert.pem
       state: present
       content: /lib_core/cert.pem
       provider:
