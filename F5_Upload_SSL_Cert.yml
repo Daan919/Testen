@@ -7,10 +7,9 @@
   tasks: 
   - name: Import PEM Certificate
     bigip_ssl_certificate:
-      name: cert.pem
+      name: test
       state: present
       content: /lib_core/test
-      validate_certs: no
       provider:
         server_port: 443
         server: 192.168.201.251
