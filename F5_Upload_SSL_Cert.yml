@@ -9,7 +9,7 @@
     bigip_ssl_certificate:
       name: cert.pem
       state: present
-      content: /lib_core/test.pem
+      content: /lib_core/test
       provider:
         server_port: 443
         server: 192.168.201.251
