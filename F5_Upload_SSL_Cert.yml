@@ -1,0 +1,16 @@
+---
+- name: upload ssl cert
+  hosts: all
+  connection: local
+
+  tasks: 
+  - name: Import PEM Certificate
+    bigip_ssl_certificate:
+      name: certificate-name_test
+      state: present
+      content: /lib_core/cert.pem
+      provider:
+        server_port: 443
+        server: 192.168.201.251
+        validate_certs: no
+    delegate_to: localhost
