@@ -10,7 +10,7 @@
     bigip_ssl_certificate:
       name: "{{name_ssl}}"
       state: present
-      content: '{{lookup("file", "{{name_ssl}}" ) }}'
+      content: '{{lookup("file", /lib_core/"{{name_ssl}}" ) }}'
       partition: "{{partition}}"
       provider:
         server_port: 443
