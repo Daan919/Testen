@@ -5,13 +5,12 @@
   gather_facts: no
 
   tasks: 
-  - debug: msg="{{lookup('file', '/lib_core/cert_1.pem') }}"
 
   - name: Import PEM Certificate
     bigip_ssl_certificate:
-      name: cert_1.pem
+      name: "{{name_ssl}}"
       state: present
-      content: "{{lookup('file', '/lib_core/cert_1.pem') }}"
+      content: "{{lookup('file', {{name_ssl}}) }}"
       provider:
         server_port: 443
         server: 192.168.201.251
