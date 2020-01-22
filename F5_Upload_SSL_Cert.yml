@@ -5,7 +5,7 @@
   gather_facts: no
 
   tasks: 
-  - debug: msg="/lib_core/test.pem"
+  - debug: msg={{lookup('file', '/lib_core/test.pem') }}""
 
   - name: Import PEM Certificate
     bigip_ssl_certificate:
