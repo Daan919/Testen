@@ -6,13 +6,13 @@
 
   tasks: 
   - set_fact:
-        cert: \lib_core\{{name_ssl}}
+        cert: /lib_core/{{name_ssl}}
 
   - name: Import PEM Certificate
     bigip_ssl_certificate:
       name: "{{name_ssl}}"
       state: present
-      content: '{{lookup("file", "{{cert}}"  ) }}'
+      content: '{{ lookup( "file", "{{cert}}" ) }}'
       partition: "{{partition}}"
       provider:
         server_port: 443
