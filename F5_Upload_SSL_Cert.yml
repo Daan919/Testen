@@ -2,6 +2,7 @@
 - name: upload ssl cert
   hosts: all
   connection: local
+  gather_facts: no
 
   tasks: 
   - name: Import PEM Certificate
