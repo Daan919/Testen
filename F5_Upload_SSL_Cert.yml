@@ -5,11 +5,13 @@
   gather_facts: no
 
   tasks: 
+  - debug: msg="/lib_core/test.pem"
+
   - name: Import PEM Certificate
     bigip_ssl_certificate:
       name: test
       state: present
-      content: /lib_core/test
+      content: /lib_core/test.pem
       provider:
         server_port: 443
         server: 192.168.201.251
